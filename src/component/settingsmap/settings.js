@@ -19,15 +19,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-// import Snackbar from '@material-ui/core/Snackbar';
-// import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import logo from "../../img/Icon.png";
 
-/*
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-*/
 
 const useStyles = makeStyles ((theme) => ({
     root: {
@@ -50,9 +48,41 @@ const useStyles = makeStyles ((theme) => ({
     }
 }));
 
+function CustomizedSnackbars() {
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    return (
+        <div className={classes.root}>
+            <button className="settings-save-btn" onClick={handleClick}>
+                Save settings
+            </button>
+            <Snackbar open={open} onClose={handleClose}>
+                <Alert onClose={handleClose} style={{ position: 'absolute', width: '614px', height: '40px',
+                                                      right: '-340px', bottom: "-30px" }} severity="success"
+                >
+                    Settings saved
+                </Alert>
+            </Snackbar>
+        </div>
+    );
+}
+
 export default function SwipeableTemporaryDrawer() {
     const classes = useStyles();
-    const [state, setState, open, setOpen] = React.useState({
+    const [state, setState] = React.useState({
         left: false
     });
 
@@ -145,20 +175,6 @@ export default function SwipeableTemporaryDrawer() {
         setValue(event.target.value);
     };
 
-    /*
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpen(false);
-    };
-    */
-
     return (
         <div>
             {['OPEN MENU'].map((anchor) => (
@@ -211,7 +227,10 @@ export default function SwipeableTemporaryDrawer() {
                         </RadioGroup>
                     </FormControl>
                 </div>
-                <button className="settings-save-btn">Save settings</button>
+                <CustomizedSnackbars/>
+                <footer className="settings-hidden-footer">
+                    <span> </span>
+                </footer>
             </div>
         </div>
     );
