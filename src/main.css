@@ -1,6 +1,6 @@
 body {
     background-color: #323232;
-  }
+}
      /* HOMEPAGINA en Navigatie */ 
     .MuiAppBar-root {
       background-color: #4a4949 !important;
@@ -1213,29 +1213,11 @@ body {
     opacity: 0.5;
   }
 
-  .settings-success-alert {
+  .settings-hidden-footer {
     position: absolute;
-    width: 614px;
-    height: 40px;
-    left: 487px;
     top: 900px;
-    background: #4CAF50;
-    border: 1px solid #4CAF50;
-    box-sizing: border-box;
-    border-radius: 6px;
-  }
-
-  .settings-success-alert>span {
-    color: white;
-    position: absolute;
-    text-align: center;
-    top: 7px;
-    left: 250px;
-  }
-
-  .settings-checkCircleIcon {
-    position: absolute;
-    left: -14rem;
+    height: 30px;
+    background-color: transparent;
   }
 
   /* Footers van alle pagina's  */
