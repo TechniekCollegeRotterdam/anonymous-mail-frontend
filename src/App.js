@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-function App() {
+// Material-UI
+import { makeStyles } from "@material-ui/core/styles";
+
+// CSS
+import './main.css';
+
+// Pages
+import Home from "./Home";
+import SignUp from "./component/signupmap/signup";
+import Login from "./component/loginmap/login";
+import verifyEmail from "./component/signupmap/verifyEmail";
+import verifyLogin from "./component/loginmap/verifyLogin";
+import Dashboard from './component/dashboardmap/dashboard';
+import autoReplies from './component/automap/autoreplies';
+import spammedUsers from './component/spammap/spammedUsers';
+import Settings from './component/settingsmap/settings';
+import Signout from './component/signoutmap/Signout';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  }
+
+}));
+
+export default function NavBar() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div className={classes.root}>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path='/signup' component={SignUp}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/verifyEmail' component={verifyEmail}/>
+            <Route path='/verifyLogin' component={verifyLogin}/>
+            <Route path='/dashboard' component={Dashboard}/>
+            <Route path='/settings' component={Settings}/>
+            <Route path='/autoreplies' component={autoReplies}/>
+            <Route path='/spammedUsers' component={spammedUsers}/>
+            <Route path='/signout' component={Signout}/>
+          </Switch>
+        </div>
+      </Router>
   );
 }
-
-export default App;

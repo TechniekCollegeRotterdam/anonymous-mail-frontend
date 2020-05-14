@@ -1,0 +1,378 @@
+body {
+    background-color: #323232;
+}
+
+.MuiAppBar-root {
+    background-color: #4a4949 !important;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nav-link {
+    padding: 6px 8px;
+    color: #94f0ff !important;
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.MuiGrid-spacing-xs-3 {
+    width: 100% !important;
+    margin: -12px;
+}
+
+.laptop {
+    padding: 70px !important;
+    transform: translateX(-5%) translateY(0%);
+    animation: Vectary__y__1 1500ms 0ms linear forwards, Vectary__opacity__1 1000ms 0ms linear forwards, Vectary__opacity__2 500ms 1000ms ease-in forwards;
+}
+
+@keyframes Vectary__y__1 {
+    from {
+        top: 250px;
+    }
+
+    to {
+        top: 150px;
+    }
+}
+
+@keyframes Vectary__opacity__1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes Vectary__opacity__2 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.head-text {
+    position: absolute;
+    width: 551px;
+    height: 81px;
+    left: 95px;
+    top: 150px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94F0FF;
+    transform: translateX(-0%) translateY(-0%);
+    animation: Anonymous_mail__opacity__1 1501ms 0ms linear forwards, Anonymous_mail__y__1 1501ms 0ms cubic-bezier(0.03,0.08,1,1.03) forwards;
+}
+
+@keyframes Anonymous_mail__opacity__1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+@keyframes Anonymous_mail__y__1 {
+    from {
+        top: 75px;
+    }
+
+    to {
+        top: 150px;
+    }
+}
+
+.rec {
+    position: absolute;
+    width: 15px;
+    height: 35px;
+    top: 450px;
+    left: 730px;
+    justify-content: center;
+    border: 1px solid #94F0FF;
+    box-sizing: border-box;
+    border-radius: 28px;
+}
+
+.ellipse {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 737.5px;
+    background: #94F0FF;
+    border-radius: 30px;
+    transform: translateX(-50%) translateY(-50%);
+    animation: Ellipse_2__y__1 1501ms 0ms linear forwards;
+}
+
+@keyframes Ellipse_2__y__1 {
+    from {
+        top: 456px;
+    }
+
+    to {
+        top: 477px;
+    }
+}
+
+.about {
+    position: absolute;
+    width: 1158px;
+    height: 975px;
+    left: 190px;
+    top: 550px;
+}
+
+.about-text {
+    position: absolute;
+    width: 192px;
+    height: 84.87px;
+    top: -40px;
+    left: 475px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    color: #94F0FF;
+}
+
+.fstp {
+    position: absolute;
+    width: 850px;
+    height: 98px;
+    top: 100px;
+    left: 145px;
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 42px;
+    color: #FFFFFF;
+}
+
+.quote {
+    position: absolute;
+    width: 34px;
+    height: 108.11px;
+    left: 160px;
+    top: 120px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 144px;
+    line-height: 169px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.thanos-quote {
+    position: absolute;
+    width: 940px;
+    height: 120.23px;
+    left: 100px;
+    top: 300px;
+    font-family: Roboto, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 56px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+}
+
+.line {
+    position: absolute;
+    width: 72px;
+    height: 0;
+    left: 800px;
+    top: 450px;
+    border: 5px solid #94F0FF;
+}
+
+.thanos {
+    position: absolute;
+    width: 120px;
+    height: 42.43px;
+    left: 920px;
+    top: 400px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94F0FF;
+}
+
+.about-info-one {
+    position: absolute;
+    width: 860px;
+    height: 388.98px;
+    left: 175px;
+    top: 480px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 42px;
+    color: #FFFFFF;
+}
+
+.about-info-two {
+    position: absolute;
+    width: 860px;
+    height: 388.98px;
+    left: 175px;
+    top: 730px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 42px;
+    color: #FFFFFF;
+}
+
+.btn {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 650px;
+    top: 1520px;
+    cursor: pointer;
+}
+
+.download {
+    position: absolute;
+    width: 1200px;
+    height: 700px;
+    left: 155px;
+    justify-content: center;
+    top: 1600px;
+}
+
+.download-for {
+    position: absolute;
+    width: 447px;
+    height: 84px;
+    left: 540px;
+    top: 60px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 84px;
+    color: #94F0FF;
+}
+
+.box1 {
+    position: absolute;
+    width: 200px;
+    height: 220px;
+    top: 240px;
+    left: 200px;
+}
+
+.box2 {
+    position: absolute;
+    width: 200px;
+    height: 220px;
+    top: 240px;
+    left: 550px;
+}
+
+.box3 {
+    position: absolute;
+    width: 200px;
+    height: 220px;
+    top: 240px;
+    left: 900px;
+}
+
+.btn1 {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    top: 380px;
+    left: 210px;
+    cursor: pointer;
+}
+
+.btn2 {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    top: 380px;
+    left: 560px;
+    cursor: pointer;
+}
+
+.btn3 {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    top: 380px;
+    left: 910px;
+    cursor: pointer;
+}
+
+.windows {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    top: 260px;
+    left: 260px;
+}
+
+.macos {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    top: 260px;
+    left: 605px;
+    border-radius: 20px;
+}
+
+.linux {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    top: 260px;
+    left: 960px;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 2250px;
+    background: #4A4949;
+    text-align: center;
+}
+
+.footer {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 57px;
+    color: #94F0FF;
+}
