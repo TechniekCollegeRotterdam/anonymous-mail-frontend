@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import NavDrawer from "../navigation/NavDrawer";
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -21,9 +22,7 @@ import plus from "../../img/plus.png";
 
 const useStyles = makeStyles({
   list: {
-    background: '#2980B9',
-    background: '-webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',  
-    background: 'linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
+    background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
     borderRadius: 2,
     width: 175, 
     height:1900,
@@ -31,27 +30,38 @@ const useStyles = makeStyles({
    
   },
   fullList: {
-    width: 'auto', 
-    
+    width: 'auto',
   },
+  container: {
+      position: 'relative',
+      color: '#94F0FF',
+      fontSize: 24
+  },
+  plusicon: {
+      position: 'absolute',
+      right: 10
+  },
+    extra: {
+        margin: 100
+    }
 });
 
-export default function SwipeableTemporaryDrawer() {
+export default function Dashboard() {
   const classes = useStyles();
-  const [state, setState] = React.useState({
+  /*const [state, setState] = useState({
     left: false
    
-  });
+  });*/
 
-  const toggleDrawer = (anchor, open) => (event) => {
+/*  const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
 
     setState({ ...state, [anchor]: open });
-  };
+  };*/
 
-  const list = (anchor) => (
+/*  const list = (anchor) => (
     <div
       className={clsx(classes.list, {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
@@ -60,7 +70,7 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {/* Dashboard Navigatie */}
+      {/!* Dashboard Navigatie *!/}
       <a href='/dashboard'>
         <List>
           {['Home'].map((text) => (
@@ -118,9 +128,9 @@ export default function SwipeableTemporaryDrawer() {
       </a>
       <Divider />
     </div>
-  );
+  );*/
 
-  return (
+  /*return (
     <div>
       {['OPEN MENU'].map((anchor) => (
         <React.Fragment key={anchor}>
@@ -136,15 +146,29 @@ export default function SwipeableTemporaryDrawer() {
         </React.Fragment>
       ))}
               <h2 className="overview">Overview</h2>
-              {/* logo image */}
+              {/!* logo image *!/}
               <a href= "/dashboard"><img className= "db-logo" src={logo} width="70" height="50" alt="logo" /></a>
-              {/* voorlopige tekst getallen moeten nog verwerkt worden in de backend */}
+              {/!* voorlopige tekst getallen moeten nog verwerkt worden in de backend *!/}
               <p className="inbox">Inbox: 250 emails </p>
               <p className="trashtext">Trash: 25 mails </p>
               <p className="readtext">Read: 5 emails </p>
               <p className="unreaden">Unreaden: 245 emails </p>
               <p className="labeltext">Labels: 5 </p>
-              <a href= "/dashboard"><img className= "plusicon" src={plus} /></a>  {/* plus icoon van dashboard */}
+              <a href= "/dashboard"><img className= "plusicon" src={plus} /></a>  {/!* plus icoon van dashboard *!/}
     </div>
-  );
+  );*/
+
+  return (
+      <NavDrawer>
+          <h2 className="overview">Overview</h2>
+          <div className={clsx(classes.container)}>
+              <p className={clsx(classes.inbox, classes.extra)}>Inbox: 250 emails </p>
+              <p className={clsx(classes.trashtext, classes.extra)}>Trash: 25 mails </p>
+              <p className={clsx(classes.readtext, classes.extra)}>Read: 5 emails </p>
+              <p className={clsx(classes.unreaden, classes.extra)}>Unread: 245 emails </p>
+              <p className={clsx(classes.labeltext, classes.extra)}>Labels: 5 </p>
+              <a href= "/dashboard"><img className={clsx(classes.plusicon)} src={plus} /></a>  {/* plus icoon van dashboard */}
+          </div>
+      </NavDrawer>
+  )
 }
