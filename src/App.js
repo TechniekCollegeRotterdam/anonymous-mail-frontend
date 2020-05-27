@@ -1,9 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-//
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 
 // Material-UI
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  makeStyles
+} from "@material-ui/core/styles";
 
 // CSS
 import "./main.css";
@@ -35,22 +41,67 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
 
-  return (
-    <Router>
-      <div className={classes.root}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={Login} />
-          <Route path="/verifyEmail" component={verifyEmail} />
-          <Route path="/verifyLogin" component={verifyLogin} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/autoreplies" component={AutoReplies} />
-          <Route path="/spammedUsers" component={spammedUsers} />
-          <Route path="/signout" component={Signout} />
-        </Switch>
-      </div>
-    </Router>
+  return ( <
+    Router >
+    <
+    div className = {
+      classes.root
+    } >
+    <
+    Switch >
+    <
+    Route exact path = "/"
+    component = {
+      Home
+    }
+    /> <
+    Route path = "/signup"
+    component = {
+      SignUp
+    }
+    /> <
+    Route path = "/login"
+    component = {
+      Login
+    }
+    /> <
+    Route path = "/verifyEmail"
+    component = {
+      verifyEmail
+    }
+    /> <
+    Route path = "/verifyLogin"
+    component = {
+      verifyLogin
+    }
+    /> <
+    Route path = "/dashboard"
+    component = {
+      Dashboard
+    }
+    /> <
+    Route path = "/settings"
+    component = {
+      Settings
+    }
+    /> <
+    Route path = "/autoreplies"
+    component = {
+      AutoReplies
+    }
+    /> <
+    Route path = "/spammedUsers"
+    component = {
+      spammedUsers
+    }
+    /> <
+    Route path = "/signout"
+    component = {
+      Signout
+    }
+    /> < /
+    Switch > <
+    /div> < /
+    Router >
   );
 }
