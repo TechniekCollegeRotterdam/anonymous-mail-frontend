@@ -45,104 +45,10 @@ const useStyles = makeStyles({
 
 export default function AutoReplies() {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        left: false
-    });
-
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-
-        setState({ ...state, [anchor]: open });
-    };
-
-    /*const list = (anchor) => (
-        <div
-            className={clsx(classes.list, {
-                [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-            })}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
-        >
-            {/!* Dashboard Navigatie *!/}
-            <a href='/dashboard'>
-                <List>
-                    {['Home'].map((text) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon> <HomeSharpIcon /></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-            </a>
-            <Divider />
-            <Divider />
-            <a href='/autoreplies'>
-                <List>
-                    {['Auto Replies'].map((text) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon> <ReplySharpIcon /></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-            </a>
-            <Divider />
-            <a href='/spammedUsers'>
-                <List>
-                    {['Spammed Users'].map((text) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon> <PriorityHighSharpIcon /></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-            </a>
-            <Divider />
-            <a href='/settings'>
-                <List>
-                    {['Settings'].map((text) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon> <SettingsSharpIcon /></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-            </a>
-            <Divider />
-            <a href='/signout'>
-                <List>
-                    {['Signout'].map((text) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon> <ExitToAppSharpIcon /></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-            </a>
-            <Divider />
-        </div>
-    );*/
 
     return (
         <NavDrawer>
-            {/*{['OPEN MENU'].map((anchor) => (
-                <React.Fragment key={anchor}>
-                    <Button className= "knopje" onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-                    <SwipeableDrawer
-                        anchor={anchor}
-                        open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
-                        onOpen={toggleDrawer(anchor, true)}
-                    >
-                        {list(anchor)}
-                    </SwipeableDrawer>
-                </React.Fragment>
-            ))}*/}
             <h2 className="overview">Auto replies</h2>
-            {/* logo image */}
             <div className={clsx(classes.container)}>
                 <div className="auto-btns">
                     <input className="auto-title" placeholder="Title"/>
