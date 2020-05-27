@@ -1,81 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import { makeStyles } from '@material-ui/core/styles';
+// Material-UI
+import { makeStyles } from "@material-ui/core/styles";
 
-function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+// CSS
+import './main.css';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
+// Pages
+import Home from "./Home";
+import SignUp from "./component/signupmap/signup";
+import Login from "./component/loginmap/login";
+import verifyEmail from "./component/signupmap/verifyEmail";
+import verifyLogin from "./component/loginmap/verifyLogin";
+import Dashboard from './component/dashboardmap/Dashboard';
+import AutoReplies from './component/automap/AutoReplies';
+import spammedUsers from './component/spammap/spammedUsers';
+import Settings from './component/settingsmap/settings';
+import Signout from './component/signoutmap/Signout';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  }
+
 }));
 
-function CustomizedSnackbars() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+export default function App() {
+  const classes = useStyles();
 
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpen(false);
-    };
-
-    return (
-        <div className={classes.root}>
-            <Button variant="outlined" onClick={handleClick}>
-                Open success snackbar
-            </Button>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success">
-                    This is a success message!
-                </Alert>
-            </Snackbar>
-            <Alert severity="error">This is an error message!</Alert>
-            <Alert severity="warning">This is a warning message!</Alert>
-            <Alert severity="info">This is an information message!</Alert>
-            <Alert severity="success">This is a success message!</Alert>
-        </div>
-    );
-}
-
-
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <CustomizedSnackbars/>
-    </div>
+      <Router>
+        <div className={classes.root}>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path='/signup' component={SignUp}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/verifyEmail' component={verifyEmail}/>
+            <Route path='/verifyLogin' component={verifyLogin}/>
+            <Route path='/dashboard' component={Dashboard}/>
+            <Route path='/settings' component={Settings}/>
+            <Route path='/autoreplies' component={AutoReplies}/>
+            <Route path='/spammedUsers' component={spammedUsers}/>
+            <Route path='/signout' component={Signout}/>
+          </Switch>
+        </div>
+      </Router>
   );
 }
-
-export default App;
-
