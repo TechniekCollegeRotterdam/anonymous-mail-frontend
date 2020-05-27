@@ -41,67 +41,22 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
 
-  return ( <
-    Router >
-    <
-    div className = {
-      classes.root
-    } >
-    <
-    Switch >
-    <
-    Route exact path = "/"
-    component = {
-      Home
-    }
-    /> <
-    Route path = "/signup"
-    component = {
-      SignUp
-    }
-    /> <
-    Route path = "/login"
-    component = {
-      Login
-    }
-    /> <
-    Route path = "/verifyEmail"
-    component = {
-      verifyEmail
-    }
-    /> <
-    Route path = "/verifyLogin"
-    component = {
-      verifyLogin
-    }
-    /> <
-    Route path = "/dashboard"
-    component = {
-      Dashboard
-    }
-    /> <
-    Route path = "/settings"
-    component = {
-      Settings
-    }
-    /> <
-    Route path = "/autoreplies"
-    component = {
-      AutoReplies
-    }
-    /> <
-    Route path = "/spammedUsers"
-    component = {
-      spammedUsers
-    }
-    /> <
-    Route path = "/signout"
-    component = {
-      Signout
-    }
-    /> < /
-    Switch > <
-    /div> < /
-    Router >
+  return (
+    <Router>
+      <div className={classes.root}>
+        <Switch>
+          <Route exact path="/"component={Home}/> 
+          <Route exact path="signup"component={SignUp}/> 
+          <Route exact path="/login"component={Login}/> 
+          <Route exact path="/verifyEmail"component={verifyEmail}/> 
+          <Route exact path="/verifyLogin"component={verifyLogin}/> 
+          <Route exact path="/dashboard"component={Dashboard}/> 
+          <Route exact path="/settings"component={Settings}/> 
+          <Route exact path="/autoreplies"component={AutoReplies}/> 
+          <Route exact path="/spammedUsers"component={spammedUsers}/> 
+          <Route exact path="/signout"component={Signout}/> 
+        </Switch>
+      </div>
+    </Router>
   );
 }
