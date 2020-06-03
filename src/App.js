@@ -7,6 +7,8 @@ import {
 
 // Material-UI
 import { makeStyles } from "@material-ui/core/styles";
+import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles"
+import themeFile from "./util/theme"
 
 // CSS
 import './main.css';
@@ -22,6 +24,8 @@ import AutoReplies from './component/automap/AutoReplies';
 import spammedUsers from './component/spammap/spammedUsers';
 import Settings from './component/settingsmap/settings';
 import Signout from './component/signoutmap/Signout';
+
+const theme = createMuiTheme(themeFile)
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,21 +44,23 @@ export default function App() {
   const classes = useStyles();
 
   return (
+    <MuiThemeProvider theme={theme}>
       <Router>
         <div className={classes.root}>
           <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path='/signup' component={SignUp}/>
-            <Route path='/login' component={Login}/>
-            <Route path='/verifyEmail' component={verifyEmail}/>
-            <Route path='/verifyLogin' component={verifyLogin}/>
-            <Route path='/dashboard' component={Dashboard}/>
-            <Route path='/settings' component={Settings}/>
-            <Route path='/autoreplies' component={AutoReplies}/>
-            <Route path='/spammedUsers' component={spammedUsers}/>
-            <Route path='/signout' component={Signout}/>
+            <Route exact path="/" component={Home} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/login' component={Login} />
+            <Route path='/verifyEmail' component={verifyEmail} />
+            <Route path='/verifyLogin' component={verifyLogin} />
+            <Route path='/dashboard' component={Dashboard} />
+            <Route path='/settings' component={Settings} />
+            <Route path='/autoreplies' component={AutoReplies} />
+            <Route path='/spammedUsers' component={spammedUsers} />
+            <Route path='/signout' component={Signout} />
           </Switch>
         </div>
       </Router>
+    </MuiThemeProvider>
   );
 }
