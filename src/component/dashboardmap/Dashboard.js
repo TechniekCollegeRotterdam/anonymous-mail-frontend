@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import SendIcon from '@material-ui/icons/Send';
