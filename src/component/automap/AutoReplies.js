@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import HomeSharpIcon from '@material-ui/icons/HomeSharp';
-import ReplySharpIcon from '@material-ui/icons/ReplySharp';
-import PriorityHighSharpIcon from '@material-ui/icons/PriorityHighSharp';
-import SettingsSharpIcon from '@material-ui/icons/SettingsSharp';
-import ExitToAppSharpIcon from '@material-ui/icons/ExitToAppSharp';
-import logo from "../../img/Icon.png";
 import plus from "../../img/plus.png";
 import NavDrawer from "../navigation/NavDrawer"
+import Modal from "../modals/Modals"
+import withStyles from "@material-ui/core/styles/withStyles"
+import TextField from "@material-ui/core/TextField"
+import Container from "@material-ui/core/Container"
+import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
 
 {/*stijl element */}
 
-const useStyles = makeStyles({
+const styles = (theme) => ({
+    ...theme.spreadThis,
     list: {
         background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
         borderRadius: 2,
@@ -40,11 +33,36 @@ const useStyles = makeStyles({
     plusicon: {
         position: 'absolute',
         right: 10
+    },
+    autoContainer: {
+        border: '1px solid #94F0FF',
+        borderRadius: 5,
+        padding: 20
     }
 });
 
-export default function AutoReplies() {
-    const classes = useStyles();
+function AutoReplies(props) {
+    const {classes} = props
+
+    const modalDetails = () => {
+        return(
+            <Fragment>
+                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Title"} fullWidth/>
+                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Subject"} fullWidth/>
+                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Body"} fullWidth multiline={true}/>
+                <Container className={clsx(classes.autoContainer)}>
+                    <Typography style={{marginBottom: 10}}>Send to:</Typography>
+                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} placeholder="janedoe@gmail.com" fullWidth/>
+                    <Button 
+                        className={clsx(classes.button, classes.textColors)}
+                        variant="contained"
+                    >
+                        Save
+                    </Button>
+                </Container>
+            </Fragment>
+        )
+    }
 
     return (
         <NavDrawer>
@@ -74,8 +92,15 @@ export default function AutoReplies() {
                     </div>
                     <button className="auto-save-btn-2">Save</button>
                 </div>
-                <a href= "/dashboard"><img className={clsx(classes.plusicon)} src={plus} /></a>
+                <Modal
+                    title="New auto reply"
+                    rest={modalDetails}
+                >
+                    <img className={clsx(classes.plusicon)} src={plus} />
+                </Modal>
             </div>
         </NavDrawer>
     );
 }
+
+export default (withStyles(styles)(AutoReplies))
