@@ -9,8 +9,6 @@ import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 
-{/*stijl element */}
-
 const styles = (theme) => ({
     ...theme.spreadThis,
     list: {
@@ -76,7 +74,7 @@ function AutoReplies(props) {
                         <span>Send to:</span>
                         <input type="text" placeholder="johndoe@gmail.com" className="ex-mail"/>
                         <input type="text" className="ex-mail-1-2"/>
-                        <img className= "plusicon-auto-add" src={plus} />
+                        <img className= "plusicon-auto-add" alt="plus icon" src={plus} />
                     </div>
                     <button className="auto-save-btn">Save</button>
                 </div>
@@ -88,7 +86,7 @@ function AutoReplies(props) {
                         <span>Send to:</span>
                         <input type="text" placeholder="janedoe@gmail.com" className="ex-mail-2"/>
                         <input type="text" className="ex-mail-2-2"/>
-                        <img className= "plusicon-auto-add-2" src={plus} />
+                        <img className= "plusicon-auto-add-2" alt="plus icon" src={plus} />
                     </div>
                     <button className="auto-save-btn-2">Save</button>
                 </div>
@@ -96,7 +94,7 @@ function AutoReplies(props) {
                     title="New auto reply"
                     rest={modalDetails}
                 >
-                    <img className={clsx(classes.plusicon)} src={plus} />
+                    <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
                 </Modal>
             </div>
         </NavDrawer>

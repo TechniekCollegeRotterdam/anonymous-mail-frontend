@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx"
 
 // Material-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -41,13 +42,15 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         padding: theme.spacing(1)
+    },
+    background: {
+        backgroundColor: '#323232'
     }
 }));
 
 export default function Home() {
     const classes = useStyles();
 
-    let background = '#323232';
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -72,10 +75,10 @@ export default function Home() {
                     <h1 className="head-text">Anonymous Mail</h1>
                 </Grid>
                 <Grid item xs={4}>
-                    <Paper className={classes.paper} className={background}/>
+                    <Paper className={clsx(classes.paper, classes.background)}/>
                 </Grid>
                 <Grid item xs={4}>
-                    <img src={laptop} alt="laptop" width="350" height="250" className={classes.paper} className="laptop"/>
+                    <img src={laptop} alt="laptop" width="350" height="250" className={clsx(classes.paper, "laptop")}/>
                 </Grid>
             </Grid>
 

@@ -16,13 +16,9 @@ import ExitToAppSharpIcon from '@material-ui/icons/ExitToAppSharp';
 import logo from "../../img/Icon.png";
 import plus from "../../img/plus.png";
 
-{/*stijl element */}
-
 const useStyles = makeStyles({
     list: {
-        background: '#2980B9',
-        background: '-webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
-        background: 'linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
+        background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
         borderRadius: 2,
         width: 175,
         height:1900,
@@ -143,7 +139,7 @@ export default function SwipeableTemporaryDrawer() {
             <p className="readtext">Read: 5 emails </p>
             <p className="unreaden">Unreaden: 245 emails </p>
             <p className="labeltext">Labels: 5 </p>
-            <a href= "/dashboard"><img className= "plusicon" src={plus} /></a>  {/* plus icoon van dashboard */}
+            <a href= "/dashboard"><img className= "plusicon" src={plus} alt="plus icon" /></a>  {/* plus icoon van dashboard */}
         </div>
     );
 }
