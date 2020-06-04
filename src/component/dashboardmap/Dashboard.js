@@ -71,7 +71,7 @@ function Dashboard(props) {
         <div className={clsx(classes.plusicon)}>
           <Modal 
             title="New Email"
-            rest={modalDetails}
+            rest={modalDetails()}
           >
             <img className={clsx(classes.plusicon)} src={plus} />
           </Modal>

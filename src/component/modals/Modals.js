@@ -87,6 +87,11 @@ const styles = (theme) => ({
   },
   buttonTextColor: {
     color: '#ffff !important'
+  },
+  button: {
+    '&:hover': {
+      backgroundColor: 'transparent !important'
+    }
   }
 });
 
@@ -133,7 +138,7 @@ const Modal = withStyles(styles)(({classes, title, children, rest}) => {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>
+      <Button className={classes.button} disableRipple={true} onClick={handleClickOpen}>
         {children}
       </Button>
       <Dialog 
@@ -151,7 +156,7 @@ const Modal = withStyles(styles)(({classes, title, children, rest}) => {
           {title}
         </DialogTitle>
         <DialogContent dividers>
-          {rest()}
+          {rest}
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
