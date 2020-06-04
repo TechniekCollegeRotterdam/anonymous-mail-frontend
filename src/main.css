@@ -1,0 +1,1177 @@
+body {
+    background-color: #323232;
+}
+
+/* HOMEPAGINA en Navigatie */
+.MuiAppBar-root {
+    background-color: #4a4949 !important;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nav-link {
+    padding: 6px 8px;
+    color: #94f0ff !important;
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.MuiGrid-spacing-xs-3 {
+    width: 100% !important;
+    margin: -12px;
+}
+
+/* Laptop Image van Homepage*/
+.laptop {
+    padding: 70px !important;
+    transform: translateX(-5%) translateY(0%);
+    animation: Vectary__y__1 1500ms 0ms linear forwards,
+    Vectary__opacity__1 1000ms 0ms linear forwards,
+    Vectary__opacity__2 500ms 1000ms ease-in forwards;
+}
+
+/* Anonymous mail tekst homepage */
+.head-text {
+    position: absolute;
+    width: 551px;
+    height: 81px;
+    left: 95px;
+    top: 150px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+    transform: translateX(-0%) translateY(-0%);
+    animation: Anonymous_mail__opacity__1 1501ms 0ms linear forwards,
+    Anonymous_mail__y__1 1501ms 0ms cubic-bezier(0.03, 0.08, 1, 1.03) forwards;
+}
+
+
+/* effecten van de homepage */
+@keyframes Vectary__y__1 {
+    from {
+        top: 250px;
+    }
+
+    to {
+        top: 150px;
+    }
+}
+
+@keyframes Vectary__opacity__1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes Vectary__opacity__2 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes Anonymous_mail__opacity__1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes Anonymous_mail__y__1 {
+    from {
+        top: 75px;
+    }
+
+    to {
+        top: 150px;
+    }
+}
+
+
+/*Scroll button Homepage en effecten */
+
+.rec {
+    position: absolute;
+    width: 15px;
+    height: 35px;
+    top: 450px;
+    left: 730px;
+    justify-content: center;
+    border: 1px solid #94f0ff;
+    box-sizing: border-box;
+    border-radius: 28px;
+}
+
+.ellipse {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 737.5px;
+    background: #94f0ff;
+    border-radius: 30px;
+    transform: translateX(-50%) translateY(-50%);
+    animation: Ellipse_2__y__1 1501ms 0ms linear forwards;
+}
+
+@keyframes Ellipse_2__y__1 {
+    from {
+        top: 456px;
+    }
+
+    to {
+        top: 477px;
+    }
+}
+
+.about {
+    position: absolute;
+    width: 1158px;
+    height: 975px;
+    left: 190px;
+    top: 550px;
+}
+
+.about-text {
+    position: absolute;
+    width: 192px;
+    height: 84.87px;
+    top: -40px;
+    left: 475px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    color: #94f0ff;
+}
+
+.fstp {
+    position: absolute;
+    width: 850px;
+    height: 98px;
+    top: 100px;
+    left: 145px;
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 42px;
+    color: #ffffff;
+}
+
+.quote {
+    position: absolute;
+    width: 34px;
+    height: 108.11px;
+    left: 160px;
+    top: 120px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 144px;
+    line-height: 169px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.thanos-quote {
+    position: absolute;
+    width: 940px;
+    height: 120.23px;
+    left: 100px;
+    top: 300px;
+    font-family: Roboto, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 56px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+
+.line {
+    position: absolute;
+    width: 72px;
+    height: 0;
+    left: 800px;
+    top: 450px;
+    border: 5px solid #94f0ff;
+}
+
+.thanos {
+    position: absolute;
+    width: 120px;
+    height: 42.43px;
+    left: 920px;
+    top: 400px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+}
+
+.about-info-one {
+    position: absolute;
+    width: 860px;
+    height: 388.98px;
+    left: 175px;
+    top: 480px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 42px;
+    color: #ffffff;
+}
+
+.about-info-two {
+    position: absolute;
+    width: 860px;
+    height: 388.98px;
+    left: 175px;
+    top: 730px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 42px;
+    color: #ffffff;
+}
+
+/* join us today button */
+.btn {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 650px;
+    top: 1520px;
+    cursor: pointer;
+}
+
+.download {
+    position: absolute;
+    width: 1200px;
+    height: 700px;
+    left: 155px;
+    justify-content: center;
+    top: 1600px;
+}
+
+/* Download for tekst */
+.download-for {
+    position: absolute;
+    width: 447px;
+    height: 84px;
+    left: 540px;
+    top: 60px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 84px;
+    color: #94f0ff;
+}
+
+.box1 {
+    position: absolute;
+    width: 200px;
+    height: 220px;
+    top: 240px;
+    left: 200px;
+}
+
+.box2 {
+    position: absolute;
+    width: 200px;
+    height: 220px;
+    top: 240px;
+    left: 550px;
+}
+
+.box3 {
+    position: absolute;
+    width: 200px;
+    height: 220px;
+    top: 240px;
+    left: 900px;
+}
+
+.btn1 {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    top: 380px;
+    left: 210px;
+    cursor: pointer;
+}
+
+.btn2 {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    top: 380px;
+    left: 560px;
+    cursor: pointer;
+}
+
+.btn3 {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    top: 380px;
+    left: 910px;
+    cursor: pointer;
+}
+
+.windows {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    top: 260px;
+    left: 260px;
+}
+
+.macos {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    top: 260px;
+    left: 605px;
+    border-radius: 20px;
+}
+
+.linux {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    top: 260px;
+    left: 960px;
+}
+
+/* SignUp en Login Page  */
+
+.signup-text {
+    position: absolute;
+    width: 313px;
+    height: 69px;
+    margin-left: 45%;
+    top: 100px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+}
+
+.Email {
+    position: absolute;
+    width: 300px;
+    height: 53px;
+    margin-left: 40%;
+    top: 380px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #94f0ff;
+    color: #94f0ff;
+    font-size: 16px;
+}
+
+.Username {
+    position: absolute;
+    width: 300px;
+    height: 53px;
+    margin-left: 40%;
+    top: 470px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #94f0ff;
+    color: #94f0ff;
+    font-size: 16px;
+}
+
+.Password {
+    position: absolute;
+    width: 300px;
+    height: 53px;
+    margin-left: 40%;
+    top: 560px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #94f0ff;
+    color: #94f0ff;
+    font-size: 16px;
+}
+
+/* password field voor LOGIN pagina*/
+.Password2 {
+    position: absolute;
+    width: 300px;
+    height: 53px;
+    margin-left: 40%;
+    top: 500px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #94f0ff;
+    color: #94f0ff;
+    font-size: 16px;
+}
+
+/* already have an account tekst */
+.log-in {
+    position: absolute;
+    width: 258px;
+    height: 21px;
+    margin-left: 42%;
+    top: 650px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+}
+
+.signup-btn {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    margin-left: 40%;
+    top: 740px;
+    cursor: pointer;
+    background: #c4c4c4;
+}
+
+.login-btn {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    margin-left: 40%;
+    top: 675px;
+    cursor: pointer;
+    background: #c4c4c4;
+}
+
+
+/* verifyEmail */
+
+.vl {
+    position: absolute;
+    width: 390px;
+    height: 72px;
+    left: 43%;
+    top: 120px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+}
+
+/* overview dashboard */
+.vl-dashboard {
+    position: absolute;
+    width: 390px;
+    height: 72px;
+    left: 43%;
+    top: 20px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+}
+
+/* Please enter the code text */
+.enter-code {
+    position: absolute;
+    width: 1184px;
+    height: 56px;
+    left: 20%;
+    top: 300px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 56px;
+    color: #94f0ff;
+}
+
+/* Enter code invoerveld  */
+.enter-code-input {
+    position: absolute;
+    width: 300px;
+    height: 53px;
+    left: 42%;
+    top: 480px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #94f0ff;
+    color: #94f0ff;
+    font-size: 16px;
+}
+
+/* continue btn */
+
+.continue-btn {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 42%;
+    top: 660px;
+}
+
+
+/* dashboard sectie */
+.overview {
+    position: absolute;
+    width: 313px;
+    height: 69px;
+    margin-left: 40%;
+    top: 10%;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+}
+
+.knopje {
+    background: #2980B9; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 149px 21px !important;
+}
+
+.MuiButton-label {
+    font-weight: 500;
+    color: #1d1919;
+    font-variant: small-caps;
+}
+
+.db-bord {
+    position: absolute;
+    margin-left: 0rem;
+    z-index: 1;
+}
+
+.db-logo {
+    position: absolute;
+    margin-top: 9rem;
+    margin-left: 18rem;
+    z-index: 2;
+}
+
+.stripedbtn {
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 6.5rem;
+    z-index: 2;
+}
+
+.homedash {
+    position: absolute;
+    margin-top: 20rem;
+    margin-left: 2rem;
+    z-index: 2;
+}
+
+.eerstelijn {
+    position: absolute;
+    left: 0%;
+    top: 25rem;
+    bottom: 62.3%;
+    width: 8.3rem;
+    height: 0.04%;
+    border: 1px solid #C0C0C0;
+    z-index: 2;
+}
+
+.block {
+    position: absolute;
+    left: 2.3rem;
+    right: 0%;
+    top: 27rem;
+    bottom: 0%;
+    z-index: 2;
+}
+
+.tweedelijn {
+    position: absolute;
+    left: 0%;
+    top: 31.5rem;
+    bottom: 62.3%;
+    width: 8.3rem;
+    height: 0.04%;
+    border: 1px solid #C0C0C0;
+    z-index: 2;
+}
+
+.reply {
+    position: absolute;
+    left: 2.3rem;
+    right: 0%;
+    top: 33.5rem;
+    bottom: 0%;
+    z-index: 2;
+}
+
+.derdelijn {
+    position: absolute;
+    left: 0%;
+    top: 37.6rem;
+    bottom: 62.3%;
+    width: 8.3rem;
+    height: 0.04%;
+    border: 1px solid #C0C0C0;
+    z-index: 2;
+}
+
+.trash {
+    position: absolute;
+    left: 2.3rem;
+    right: 0%;
+    top: 39.5rem;
+    bottom: 0%;
+    z-index: 2;
+}
+
+.vierdelijn {
+    position: absolute;
+    left: 0%;
+    top: 43.8rem;
+    bottom: 62.3%;
+    width: 8.3rem;
+    height: 0.04%;
+    border: 1px solid #C0C0C0;
+    z-index: 2;
+}
+
+.settings {
+    position: absolute;
+    left: 2.3rem;
+    right: 0%;
+    top: 45.5rem;
+    bottom: 0%;
+    z-index: 2;
+}
+
+.vijfdelijn {
+    position: absolute;
+    left: 0%;
+    top: 49.8rem;
+    bottom: 62.3%;
+    width: 8.3rem;
+    height: 0.04%;
+    border: 1px solid #C0C0C0;
+    z-index: 2;
+}
+
+.logoutlogo {
+    position: absolute;
+    left: 2.3rem;
+    right: 0%;
+    top: 52.2rem;
+    bottom: 0%;
+    z-index: 2;
+}
+
+/* Auto replies page */
+.auto-btns {
+    position: absolute;
+    top: 120px;
+}
+
+.auto-btns-2 {
+    position: absolute;
+    top: 120px;
+    left: 500px;
+}
+
+.auto-title {
+    position: absolute;
+    width: 170px;
+    height: 48px;
+    left: 449px;
+    top: 147px;
+    border: 1px solid #94f0ff;
+    border-radius: 5px;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+
+.auto-subject {
+    position: absolute;
+    width: 170px;
+    height: 48px;
+    left: 449px;
+    top: 261px;
+    border: 1px solid #94f0ff;
+    border-radius: 5px;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+
+.auto-body {
+    position: absolute;
+    width: 337px;
+    height: 209px;
+    left: 370px;
+    top: 440px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+}
+
+.auto-body-2 {
+    position: absolute;
+    width: 337px;
+    height: 209px;
+    left: 370px;
+    top: 440px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+}
+
+.send-to {
+    position: absolute;
+    width: 337px;
+    height: 209px;
+    left: 370px;
+    top: 740px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+}
+
+.send-to-2 {
+    position: absolute;
+    width: 337px;
+    height: 209px;
+    left: 370px;
+    top: 740px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+}
+
+.send-to > span {
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.send-to-2 > span {
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.ex-mail {
+    position: absolute;
+    width: 226px;
+    height: 48px;
+    left: 20px;
+    top: 60px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    background-color: #456064;
+}
+
+.ex-mail-1-2 {
+    position: absolute;
+    width: 226px;
+    height: 48px;
+    left: 20px;
+    top: 130px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color: #456064;
+}
+
+.ex-mail-2 {
+    position: absolute;
+    width: 226px;
+    height: 48px;
+    left: 20px;
+    top: 60px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    background-color: #456064;
+}
+
+.ex-mail-2-2 {
+    position: absolute;
+    width: 226px;
+    height: 48px;
+    left: 20px;
+    top: 130px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color: #456064;
+}
+
+.plusicon-auto-add {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: calc(50% - 105px / 2 + 160px);
+    top: calc(50% - 89px / 2 + 80px);
+    background: #94F0FF;
+    background: transparent;
+    cursor: pointer;
+}
+
+.plusicon-auto-add-2 {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: calc(50% - 105px / 2 + 160px);
+    top: calc(50% - 89px / 2 + 80px);
+    background: #94F0FF;
+    background: transparent;
+    cursor: pointer;
+}
+
+.auto-save-btn {
+    position: absolute;
+    top: 1000px;
+    left: 463px;
+    width: 150px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auto-save-btn-2 {
+    position: absolute;
+    top: 1000px;
+    left: 473px;
+    width: 150px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Spammed email addresses */
+.spammed-header {
+    position: absolute;
+    height: 69px;
+    margin-left: 35%;
+    top: 0;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #94f0ff;
+}
+
+.MuiTableContainer-root {
+    background-color: transparent !important;
+}
+
+.MuiTable-root {
+    position: absolute !important;
+    top: 15rem;
+    left: 160px !important;
+    width: 80% !important;
+    background-color: white !important;
+}
+
+#transition-modal-title {
+    position: absolute;
+    top: -50px;
+    left: 20px;
+    color: #94F0FF;
+}
+
+hr {
+    color: #94f0ff;
+}
+
+#transition-modal-description {
+    position: absolute;
+    left: 20px;
+    width: 460px;
+    text-align: center;
+    color: white;
+}
+
+/* Delete buttons Spammed Emailadress*/
+.del1 {
+    position: absolute;
+    right: 10px;
+}
+
+.del2 {
+    position: absolute;
+    display: flex;
+    top: 24rem;
+    right: 11rem;
+}
+
+.del3 {
+    position: absolute;
+    display: flex;
+    top: 28rem;
+    right: 11rem;
+}
+
+.del4 {
+    position: absolute;
+    display: flex;
+    top: 32rem;
+    right: 11rem;
+}
+
+.del5 {
+    position: absolute;
+    display: flex;
+    top: 36rem;
+    right: 11rem;
+}
+
+.del6 {
+    position: absolute;
+    display: flex;
+    top: 40rem;
+    right: 11rem;
+}
+
+.del7 {
+    position: absolute;
+    display: flex;
+    top: 44rem;
+    right: 11rem;
+}
+
+.del8 {
+    position: absolute;
+    display: flex;
+    top: 48rem;
+    right: 11rem;
+}
+
+.spammed-plusicon {
+    position: absolute;
+    width: 105px;
+    height: 89px;
+    left: calc(55% - 105px / 2 + 584.5px);
+    top: calc(65% - 89px / 2 + 409.5px);
+    background: #94F0FF;
+    background: transparent;
+}
+
+/* Settings page */
+.settings-email {
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    left: 690px;
+    top: 200px;
+    border: 1px solid #94f0ff;
+    border-radius: 5px;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+
+.settings-username {
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    left: 690px;
+    top: 300px;
+    border: 1px solid #94f0ff;
+    border-radius: 5px;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+
+.settings-phone {
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    left: 690px;
+    top: 400px;
+    border: 1px solid #94f0ff;
+    border-radius: 5px;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+
+.settings-box {
+    position: absolute;
+    width: 337px;
+    height: 209px;
+    left: 610px;
+    top: 525px;
+    border: 1px solid #94F0FF;
+    border-radius: 5px;
+}
+
+.settings-box-settings {
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    top: 20px;
+    left: 60px;
+}
+
+.radios {
+    top: 70px;
+    left: 20px;
+}
+
+.settings-save-btn {
+    position: absolute;
+    top: 800px;
+    left: 725px;
+    width: 120px;
+    height: 35px;
+    background-color: #2196f3;
+    color: white;
+    font-size: 16px;
+    border: 1px solid #94F0FF;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.settings-save-btn:hover {
+    opacity: 0.5;
+}
+
+.settings-hidden-footer {
+    position: absolute;
+    top: 900px;
+    height: 30px;
+    background-color: transparent;
+}
+
+/* Footers van alle pagina's  */
+footer {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 2250px;
+    background: #4a4949;
+    text-align: center;
+}
+
+.copyright {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 57px;
+    color: #94f0ff;
+}
+
+.footer-signup {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 910px;
+    background: #4a4949;
+    text-align: center;
+}
+
+.footer-login {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 910px;
+    background: #4a4949;
+    text-align: center;
+}
+
+.footer-verify-email {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 910px;
+    background: #4a4949;
+    text-align: center;
+}
+
+.footer-verify-login {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 910px;
+    background: #4a4949;
+    text-align: center;
+}
