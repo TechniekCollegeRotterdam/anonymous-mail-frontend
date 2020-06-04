@@ -967,9 +967,7 @@ hr {
 /* Delete buttons Spammed Emailadress*/
 .del1 {
     position: absolute;
-    display: flex;
-    top: 20rem;
-    right: 11rem;
+    right: 10px;
 }
 
 .del2 {
