@@ -18,13 +18,9 @@ import NavDrawer from "../navigation/NavDrawer"
 import Modal from "../modals/Modals"
 import plus from "../../img/plus.png";
 
-{/*stijl element */ }
-
 const useStyles = makeStyles({
     list: {
-        background: '#2980B9',
-        background: '-webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
-        background: 'linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
+        background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
         borderRadius: 2,
         width: 175,
         height: 1900,
@@ -191,7 +187,7 @@ export default function SpammedUsers() {
                         title="Add spammer"
                         rest={addModal()}
                     >
-                        <img className={clsx(classes.plusicon)} src={plus} />
+                        <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
                     </Modal>
             </NavDrawer>
         </div>

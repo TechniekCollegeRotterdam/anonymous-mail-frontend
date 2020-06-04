@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -10,7 +9,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import NavDrawer from "../navigation/NavDrawer"
-import logo from "../../img/Icon.png";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -24,9 +22,7 @@ const useStyles = makeStyles ((theme) => ({
         },
     },
     list: {
-        background: '#2980B9',
-        background: '-webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
-        background: 'linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
+        background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
         borderRadius: 2,
         width: 175,
         height:1900,
