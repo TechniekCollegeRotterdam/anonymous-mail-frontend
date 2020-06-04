@@ -21,7 +21,7 @@ import verifyEmail from "./component/signupmap/verifyEmail";
 import verifyLogin from "./component/loginmap/verifyLogin";
 import Dashboard from './component/dashboardmap/Dashboard';
 import AutoReplies from './component/automap/AutoReplies';
-import spammedUsers from './component/spammap/spammedUsers';
+import SpammedUsers from './component/spammap/spammedUsers';
 import Settings from './component/settingsmap/settings';
 import Signout from './component/signoutmap/Signout';
 
@@ -56,7 +56,7 @@ export default function App() {
             <Route path='/dashboard' component={Dashboard} />
             <Route path='/settings' component={Settings} />
             <Route path='/autoreplies' component={AutoReplies} />
-            <Route path='/spammedUsers' component={spammedUsers} />
+            <Route path='/spammedUsers' component={SpammedUsers} />
             <Route path='/signout' component={Signout} />
           </Switch>
         </div>
