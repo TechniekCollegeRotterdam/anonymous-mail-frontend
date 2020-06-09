@@ -1,11 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import NavDrawer from "../navigation/NavDrawer"
@@ -56,7 +50,7 @@ function CustomizedSnackbars() {
             </button>
             <Snackbar open={open} onClose={handleClose}>
                 <Alert onClose={handleClose} style={{ position: 'absolute', width: '614px', height: '40px',
-                                                      right: '-340px', bottom: "-30px" }} severity="success"
+                    right: '-340px', bottom: "-30px" }} severity="success"
                 >
                     Settings saved
                 </Alert>
@@ -73,7 +67,7 @@ export default function Settings() {
         setChecked(event.target.checked);
     };
 
-    const [value, setValue] = React.useState('phone');
+    const [value, setValue] = React.useState('email');
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -81,53 +75,10 @@ export default function Settings() {
 
     return (
         <NavDrawer>
-            <h2 className="overview">My data</h2>
+            <h2 className="settings-overview">My data</h2>
             <div className="settings-container">
                 <input className="settings-email" placeholder="Email address"/>
                 <input className="settings-username" placeholder="Username"/>
-                <input className="settings-phone" placeholder="Phone number"/>
-                <div className="settings-box">
-                    <FormControl component="fieldset">
-                        <FormGroup aria-label="position" row>
-                            <FormControlLabel
-                                value="end"
-                                control={
-                                    <Checkbox 
-                                        style={{ color: '#94F0FF', top: '11px', left: '30px' }}          
-                                        checked={checked}           
-                                        onChange={handleChangeCheckbox}
-                                    />
-                                }
-                            />
-                        </FormGroup>
-                    </FormControl>
-                    <span className="settings-box-settings">Enable two step authentication:</span>
-                    <FormControl component="fieldset" className="radios">
-                        <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                            <FormControlLabel 
-                                value="phone" 
-                                control={
-                                    <Radio 
-                                        style={{ color: '#94F0FF' }}
-                                    />
-                                }
-                                label="Phone number"
-                                style={{ color: 'white' }}
-                                disabled={checked ? false : true}
-                            />
-                            <FormControlLabel value="email" control={<Radio style={{ color: '#94F0FF' }}/>}
-                                              label="Email address"
-                                              style={{ color: 'white' }}
-                                              disabled={checked ? false : true}
-                            />
-                            <FormControlLabel value="qr" control={<Radio style={{ color: '#94F0FF' }}/>}
-                                              label="QR-code"
-                                              style={{ color: 'white' }}
-                                              disabled={checked ? false : true}
-                            />
-                        </RadioGroup>
-                    </FormControl>
-                </div>
                 <CustomizedSnackbars/>
                 <footer className="settings-hidden-footer">
                     <span> </span>
