@@ -760,6 +760,10 @@ body {
     font-size: 16px;
 }
 
+.makeStyles-content-22 {
+    margin-top: 0 !important;
+}
+
 .auto-body {
     position: absolute;
     width: 337px;
@@ -919,8 +923,8 @@ body {
 /* Spammed email addresses */
 .spammed-header {
     position: absolute;
-    height: 69px;
-    margin-left: 35%;
+    height: 220px;
+    margin-left: 30%;
     top: 0;
     font-family: Roboto, sans-serif;
     font-style: normal;
@@ -1019,32 +1023,25 @@ hr {
     right: 11rem;
 }
 
-.spammed-plusicon {
-    position: absolute;
-    width: 105px;
-    height: 89px;
-    left: calc(55% - 105px / 2 + 584.5px);
-    top: calc(65% - 89px / 2 + 409.5px);
-    background: #94F0FF;
-    background: transparent;
-}
-
 /* Settings page */
-.settings-email {
+.settings-overview {
     position: absolute;
-    width: 170px;
-    height: 40px;
-    left: 690px;
-    top: 200px;
-    border: 1px solid #94f0ff;
-    border-radius: 5px;
-    background-color: transparent;
+    width: 313px;
+    height: 60px;
+    margin-left: 38.5%;
+    top: 10%;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 84px;
+    display: flex;
+    align-items: center;
     text-align: center;
-    color: white;
-    font-size: 16px;
+    color: #94f0ff;
 }
 
-.settings-username {
+.settings-email {
     position: absolute;
     width: 170px;
     height: 40px;
@@ -1058,12 +1055,12 @@ hr {
     font-size: 16px;
 }
 
-.settings-phone {
+.settings-username {
     position: absolute;
     width: 170px;
     height: 40px;
     left: 690px;
-    top: 400px;
+    top: 380px;
     border: 1px solid #94f0ff;
     border-radius: 5px;
     background-color: transparent;
@@ -1072,33 +1069,10 @@ hr {
     font-size: 16px;
 }
 
-.settings-box {
-    position: absolute;
-    width: 337px;
-    height: 209px;
-    left: 610px;
-    top: 525px;
-    border: 1px solid #94F0FF;
-    border-radius: 5px;
-}
-
-.settings-box-settings {
-    color: white;
-    font-size: 18px;
-    position: absolute;
-    top: 20px;
-    left: 60px;
-}
-
-.radios {
-    top: 70px;
-    left: 20px;
-}
-
 .settings-save-btn {
     position: absolute;
-    top: 800px;
-    left: 725px;
+    top: 550px;
+    left: 715px;
     width: 120px;
     height: 35px;
     background-color: #2196f3;
@@ -1116,8 +1090,8 @@ hr {
 
 .settings-hidden-footer {
     position: absolute;
-    top: 900px;
-    height: 30px;
+    top: 650px;
+    height: 0;
     background-color: transparent;
 }
 
