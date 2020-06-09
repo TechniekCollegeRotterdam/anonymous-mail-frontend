@@ -30,7 +30,8 @@ const styles = (theme) => ({
     },
     plusicon: {
         position: 'absolute',
-        right: 10
+        left: '77rem',
+        top: '70rem'
     },
     autoContainer: {
         border: '1px solid #94F0FF',
