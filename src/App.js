@@ -6,9 +6,13 @@ import {
   Redirect
 } from "react-router-dom";
 
+// Redux
+import { Provider } from 'redux-thunk'
+import store from './redux/store'
+
 // Material-UI
 import { makeStyles } from "@material-ui/core/styles";
-import {createMuiTheme, MuiThemeProvider} from "@material-ui/core/styles"
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import themeFile from "./util/theme"
 
 // CSS
@@ -45,25 +49,27 @@ export default function App() {
   const classes = useStyles();
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <Router>
-        <div className={classes.root}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path='/signup' component={SignUp} />
-            <Route path='/login' component={Login} />
-            <Route path='/verifyEmail' component={verifyEmail} />
-            <Route path='/verifyLogin' component={verifyLogin} />
-            <Route path='/dashboard' component={Dashboard} />
-            <Route path='/settings' component={Settings} />
-            <Route path='/autoreplies' component={AutoReplies} />
-            <Route path='/spammedUsers' component={SpammedUsers} />
-            <Route path='/signout'>
-              {<Redirect to="/"/>}
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </MuiThemeProvider>
+    <Provider store={store}>
+      <MuiThemeProvider theme={theme}>
+        <Router>
+          <div className={classes.root}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path='/signup' component={SignUp} />
+              <Route path='/login' component={Login} />
+              <Route path='/verifyEmail' component={verifyEmail} />
+              <Route path='/verifyLogin' component={verifyLogin} />
+              <Route path='/dashboard' component={Dashboard} />
+              <Route path='/settings' component={Settings} />
+              <Route path='/autoreplies' component={AutoReplies} />
+              <Route path='/spammedUsers' component={SpammedUsers} />
+              <Route path='/signout'>
+                {<Redirect to="/" />}
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </MuiThemeProvider>
+    </Provider>
   );
 }
