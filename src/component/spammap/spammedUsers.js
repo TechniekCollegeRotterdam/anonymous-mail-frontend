@@ -36,6 +36,11 @@ const useStyles = makeStyles({
             color: '#ffffff !important'
         }
     },
+    plusicon: {
+        position: 'absolute',
+        left: '80rem',
+        top: '35rem'
+    },
     addButton: {
         marginTop: 15,
         backgroundColor: '#4A934D'
