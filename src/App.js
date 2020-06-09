@@ -2,7 +2,8 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 // Material-UI
@@ -57,7 +58,9 @@ export default function App() {
             <Route path='/settings' component={Settings} />
             <Route path='/autoreplies' component={AutoReplies} />
             <Route path='/spammedUsers' component={SpammedUsers} />
-            <Route path='/signout' component={Signout} />
+            <Route path='/signout'>
+              {<Redirect to="/"/>}
+            </Route>
           </Switch>
         </div>
       </Router>

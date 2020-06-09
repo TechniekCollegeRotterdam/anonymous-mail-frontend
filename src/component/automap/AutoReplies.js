@@ -92,7 +92,7 @@ function AutoReplies(props) {
                 </div>
                 <Modal
                     title="New auto reply"
-                    rest={modalDetails}
+                    rest={modalDetails()}
                 >
                     <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
                 </Modal>
