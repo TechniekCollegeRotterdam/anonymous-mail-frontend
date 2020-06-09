@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 // Redux
-import { Provider } from 'redux-thunk'
+import { Provider } from 'react-redux'
 import store from './redux/store'
 
 // Material-UI
