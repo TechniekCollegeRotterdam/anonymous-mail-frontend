@@ -1,89 +1,200 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import React, { Fragment } from 'react';
+import clsx from 'clsx';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography"
+import DeleteIcon from '@material-ui/icons/Delete';
+import SaveIcon from '@material-ui/icons/Save';
 import NavDrawer from "../navigation/NavDrawer"
+import Modal from "../modals/Modals"
+import plus from "../../img/plus.png";
 
-function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
-const useStyles = makeStyles ((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
+const useStyles = makeStyles({
     list: {
         background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
         borderRadius: 2,
         width: 175,
-        height:1900,
+        height: 1900,
         padding: 100
     },
     fullList: {
         width: 'auto'
-    }
-}));
-
-function CustomizedSnackbars() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
+    },
+    deleteButton: {
+        backgroundColor: '#b90000 !important',
+        marginTop: 15,
+        '& *': {
+            color: '#ffffff !important'
         }
+    },
+    plusicon: {
+        position: 'absolute',
+        left: '80rem',
+        top: '35rem'
+    },
+    addButton: {
+        marginTop: 15,
+        backgroundColor: '#4A934D'
+    }
+});
 
-        setOpen(false);
-    };
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+        padding: theme.spacing(2)
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #94f0ff',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+        alignItems: 'center',
+    }
+}))(TableCell);
 
-    return (
-        <div className={classes.root}>
-            <button className="settings-save-btn" onClick={handleClick}>
-                Save settings
-            </button>
-            <Snackbar open={open} onClose={handleClose}>
-                <Alert onClose={handleClose} style={{ position: 'absolute', width: '614px', height: '40px',
-                    right: '-340px', bottom: "-30px" }} severity="success"
-                >
-                    Settings saved
-                </Alert>
-            </Snackbar>
-        </div>
-    );
+const StyledTableRow = withStyles((theme) => ({
+    root: {
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+    },
+}))(TableRow);
+
+function createData(email, addedAt) {
+    return { email, addedAt };
 }
 
-export default function Settings() {
+const rows = [
+    createData('hacker@outlook.com', '25 march 2020'),
+    createData('hacker@outlook.com', '25 march 2020'),
+    createData('hacker@outlook.com', '25 march 2020'),
+    createData('hacker@outlook.com', '25 march 2020'),
+    createData('hacker@outlook.com', '25 march 2020'),
+    createData('hacker@outlook.com', '25 march 2020'),
+    createData('hacker@outlook.com', '25 march 2020'),
+    createData('hacker@outlook.com', '25 march 2020')
+];
 
-    const [checked, setChecked] = React.useState(false);
+export default function SpammedUsers() {
+    const classes = useStyles();
 
-    const handleChangeCheckbox = (event) => {
-        setChecked(event.target.checked);
-    };
+    const addModal = () => {
+        return (
+            <Fragment>
+                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"New spammer"} fullWidth/>
+                <Button
+                    className={clsx(classes.addButton)}
+                    variant="contained"
+                    startIcon={<SaveIcon/>}
+                >
+                    Save
+                </Button>
+            </Fragment>
+        )
+    }
 
-    const [value, setValue] = React.useState('email');
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
+    const deleteModal = () => {
+        return (
+            <Fragment>
+                <Typography>
+                    Are you sure you want to remove this spammer?<br />
+                    Doing this will allow emails from this user to come in your inbox.
+                </Typography>
+                <Button
+                    className={clsx(classes.deleteButton)}
+                    variant="contained"
+                    startIcon={<DeleteIcon/>}
+                >
+                    Delete
+                </Button>
+            </Fragment>
+        )
+    }
 
     return (
-        <NavDrawer>
-            <h2 className="settings-overview">My data</h2>
-            <div className="settings-container">
-                <input className="settings-email" placeholder="Email address"/>
-                <input className="settings-username" placeholder="Username"/>
-                <CustomizedSnackbars/>
-                <footer className="settings-hidden-footer">
-                    <span> </span>
-                </footer>
-            </div>
-        </NavDrawer>
+        <div>
+            <NavDrawer>
+                <h2 className="spammed-header">Spammed email addresses</h2>
+                <TableContainer component={Paper}>
+                    <Table className={classes.table} aria-label="customized table">
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell>Email addresses:</StyledTableCell>
+                                <StyledTableCell align="right">Added at:</StyledTableCell>
+                                <StyledTableCell align="right"> </StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {rows.map((row) => (
+                                <StyledTableRow stlye={{ position: 'relative' }} key={row.email}>
+                                    <StyledTableCell component="th" scope="row">
+                                        <TextField
+                                            id="standard-read-only-input"
+                                            defaultValue={row.email}
+                                            InputProps={{
+                                                readOnly: true,
+                                            }}
+                                        />
+                                    </StyledTableCell>
+                                    <StyledTableCell align="right">
+                                        <TextField
+                                            id="standard-read-only-input"
+                                            defaultValue={row.addedAt}
+                                            InputProps={{
+                                                readOnly: true,
+                                            }}
+                                        />
+                                    </StyledTableCell>
+                                    <StyledTableCell style={{ position: 'relative' }} align="right">
+                                        <Modal
+                                            title="Remove spammer"
+                                            rest={deleteModal()}
+                                        >
+                                            <div>
+                                                <button
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: -10,
+                                                        right: 15
+                                                    }}
+                                                    className="del1"
+                                                >
+                                                    <DeleteSharpIcon style={{ color: 'red', cursor: 'pointer' }} />
+                                                </button>
+                                            </div>
+                                        </Modal>
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+
+                <Modal
+                        title="Add spammer"
+                        rest={addModal()}
+                    >
+                        <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
+                    </Modal>
+            </NavDrawer>
+        </div>
     );
 }
