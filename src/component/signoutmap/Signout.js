@@ -132,7 +132,7 @@ export default function SwipeableTemporaryDrawer() {
             ))}
             <h2 className="overview">Signout</h2>
             {/* logo image */}
-            <a href= "/dashboard"><img className= "db-logo" src={logo} width="70" height="50" alt="logo" /></a>
+            <a href= "/"><img className= "db-logo" src={logo} width="70" height="50" alt="logo" /></a>
             {/* voorlopige tekst getallen moeten nog verwerkt worden in de backend */}
             <p className="inbox">Inbox: 250 emails </p>
             <p className="trashtext">Trash: 25 mails </p>

@@ -122,6 +122,9 @@ const useStyles = makeStyles((theme) => ({
     },
     colors: {
         color: '#94F0FF'
+    },
+    toolbarExtra: {
+        backgroundColor: 'transparent !important'
     }
 }));
 

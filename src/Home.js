@@ -74,9 +74,7 @@ export default function Home() {
                 <Grid item xs={4}>
                     <h1 className="head-text">Anonymous Mail</h1>
                 </Grid>
-                <Grid item xs={4}>
-                    <Paper className={clsx(classes.paper, classes.background)}/>
-                </Grid>
+                <Grid item xs={4}/>
                 <Grid item xs={4}>
                     <img src={laptop} alt="laptop" width="350" height="250" className={clsx(classes.paper, "laptop")}/>
                 </Grid>

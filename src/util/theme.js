@@ -4,6 +4,11 @@ export default {
             root: {
                 backgroundColor: 'rgba(8,9,8,0.76)' 
             }
+        },
+        MuiToolbar: {
+            root: {
+                backgroundColor: 'transparent'
+            }
         }
     },
     palette: {
