@@ -13,6 +13,7 @@ import continueBtn from "../../img/Continue.png";
 
 // CSS
 import "../../main.css";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ButtonAppBar() {
+export default function VerifyLogin() {
     const klassen = useStyles();
 
     return (
@@ -49,11 +50,11 @@ export default function ButtonAppBar() {
             <p className="enter-code">
                 Please enter the code that you received in your mail box.
             </p>
-            <input
-                type="text"
-                placeholder="Enter code"
-                className="enter-code-input"
-            />
+            <form noValidate autoComplete="off">
+                <TextField className="enter-code-input" type="text" id="outlined-basic" label="Enter code"
+                           variant="outlined"
+                />
+            </form>
             <img className="continue-btn" src={continueBtn} alt="continue" />
 
             <footer className="footer-verify-login">
