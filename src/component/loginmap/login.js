@@ -14,6 +14,7 @@ import btn2 from "../../img/Login.png";
 
 // CSS
 import "../../main.css";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ButtonAppBar() {
+export default function Login() {
     const klassen = useStyles();
 
     return (
@@ -62,8 +63,14 @@ export default function ButtonAppBar() {
             </AppBar>
 
             <h2 className="signup-text">Login</h2>
-            <input type="email" placeholder="E-mail" className="Email" />
-            <input type="password" placeholder="Password" className="Password2" />
+            <form noValidate autoComplete="off">
+                <TextField className="Email-login" type="email" id="outlined-basic" label="E-mail"
+                           variant="outlined"
+                />
+                <TextField className="Password2" type="password" id="outlined-basic" label="Password"
+                           variant="outlined"
+                />
+            </form>
             <a href="/verifyLogin">
                 <img src={btn2} alt="sign up" className="login-btn" />
             </a>
