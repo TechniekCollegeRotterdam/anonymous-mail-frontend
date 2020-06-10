@@ -67,36 +67,50 @@ function AutoReplies(props) {
         <NavDrawer>
             <h2 className="overview">Auto replies</h2>
             <div className={clsx(classes.container)}>
+                <form noValidate autoComplete="off">
                 <div className="auto-btns">
-                    <input className="auto-title" placeholder="Title"/>
-                    <input className="auto-subject" placeholder="Subject"/>
+                    <TextField className="auto-title" type="text" id="outlined-basic" label="Title"
+                               variant="outlined"
+                    />
+                    <TextField className="auto-subject" type="text" id="outlined-basic" label="Subject"
+                               variant="outlined"
+                    />
                     <div className="auto-body"></div>
                     <div className="send-to">
                         <span>Send to:</span>
-                        <input type="text" placeholder="johndoe@gmail.com" className="ex-mail"/>
-                        <input type="text" className="ex-mail-1-2"/>
+                        <TextField className="ex-mail" type="text" id="outlined-basic" label="johndoe@gmail.com"
+                                   variant="outlined"
+                        />
+                        <TextField className="ex-mail-1-2" type="text" id="outlined-basic" variant="outlined"/>
                         <img className= "plusicon-auto-add" alt="plus icon" src={plus} />
                     </div>
                     <button className="auto-save-btn">Save</button>
-                </div>
-                <div className="auto-btns-2">
-                    <input className="auto-title" placeholder="Title"/>
-                    <input className="auto-subject" placeholder="Subject"/>
-                    <div className="auto-body-2"></div>
-                    <div className="send-to-2">
-                        <span>Send to:</span>
-                        <input type="text" placeholder="janedoe@gmail.com" className="ex-mail-2"/>
-                        <input type="text" className="ex-mail-2-2"/>
-                        <img className= "plusicon-auto-add-2" alt="plus icon" src={plus} />
                     </div>
-                    <button className="auto-save-btn-2">Save</button>
-                </div>
-                <Modal
-                    title="New auto reply"
-                    rest={modalDetails()}
-                >
-                    <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
-                </Modal>
+                    <div className="auto-btns-2">
+                        <TextField className="auto-title" type="text" id="outlined-basic" label="Title"
+                                   variant="outlined"
+                        />
+                        <TextField className="auto-subject" type="text" id="outlined-basic" label="Subject"
+                                   variant="outlined"
+                        />
+                        <div className="auto-body-2"></div>
+                        <div className="send-to-2">
+                            <span>Send to:</span>
+                            <TextField className="ex-mail-2" type="text" id="outlined-basic" label="janedoe@gmail.com"
+                                       variant="outlined"
+                            />
+                            <TextField className="ex-mail-2-2" type="text" id="outlined-basic" variant="outlined"/>
+                            <img className= "plusicon-auto-add-2" alt="plus icon" src={plus} />
+                        </div>
+                        <button className="auto-save-btn-2">Save</button>
+                    </div>
+                    <Modal
+                        title="New auto reply"
+                        rest={modalDetails()}
+                    >
+                        <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
+                    </Modal>
+                </form>
             </div>
         </NavDrawer>
     );
