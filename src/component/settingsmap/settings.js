@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import NavDrawer from "../navigation/NavDrawer"
+import TextField from "@material-ui/core/TextField";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -77,8 +78,12 @@ export default function Settings() {
         <NavDrawer>
             <h2 className="settings-overview">My data</h2>
             <div className="settings-container">
-                <input className="settings-email" placeholder="Email address"/>
-                <input className="settings-username" placeholder="Username"/>
+                <TextField className="settings-email" type="email" id="outlined-basic" label="Email address"
+                           variant="outlined"
+                />
+                <TextField className="settings-username" type="text" id="outlined-basic" label="Username"
+                           variant="outlined"
+                />
                 <CustomizedSnackbars/>
                 <footer className="settings-hidden-footer">
                     <span> </span>
