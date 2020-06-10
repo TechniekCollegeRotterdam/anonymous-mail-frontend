@@ -392,57 +392,60 @@ body {
     color: #94f0ff;
 }
 
-.Email {
-    position: absolute;
-    width: 300px;
-    height: 53px;
-    margin-left: 40%;
-    top: 380px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #94f0ff;
-    color: #94f0ff;
-    font-size: 16px;
+.Email-signup {
+    position: absolute !important;
+    width: 300px !important;
+    height: 53px !important;
+    margin-left: 40.5% !important;
+    top: 350px !important;
+    background-color: transparent !important;
+    color: #94f0ff !important;
+    font-size: 16px !important;
+}
+
+.Email-login {
+    position: absolute !important;
+    width: 300px !important;
+    height: 53px !important;
+    margin-left: 40% !important;
+    top: 350px !important;
+    background-color: transparent !important;
+    color: #94f0ff !important;
+    font-size: 16px !important;
 }
 
 .Username {
-    position: absolute;
-    width: 300px;
-    height: 53px;
-    margin-left: 40%;
-    top: 470px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #94f0ff;
-    color: #94f0ff;
-    font-size: 16px;
+    position: absolute !important;
+    width: 300px !important;
+    height: 53px !important;
+    margin-left: 40.5% !important;
+    top: 440px !important;
+    background-color: transparent !important;
+    color: #94f0ff !important;
+    font-size: 16px !important;
 }
 
 .Password {
-    position: absolute;
-    width: 300px;
-    height: 53px;
-    margin-left: 40%;
-    top: 560px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #94f0ff;
-    color: #94f0ff;
-    font-size: 16px;
+    position: absolute !important;
+    width: 300px !important;
+    height: 53px !important;
+    margin-left: 40.5% !important;
+    top: 530px !important;
+    background-color: transparent !important;
+    color: #94f0ff !important;
+    font-size: 16px !important;
 }
 
 /* password field voor LOGIN pagina*/
 .Password2 {
-    position: absolute;
-    width: 300px;
-    height: 53px;
-    margin-left: 40%;
-    top: 500px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #94f0ff;
-    color: #94f0ff;
-    font-size: 16px;
+    position: absolute !important;
+    width: 300px !important;
+    height: 53px !important;
+    margin-left: 40% !important;
+    top: 470px !important;
+    background-color: transparent !important;
+    color: #94f0ff !important;
+    font-size: 16px !important;
 }
 
 /* already have an account tekst */
@@ -451,7 +454,7 @@ body {
     width: 258px;
     height: 21px;
     margin-left: 42%;
-    top: 650px;
+    top: 620px;
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -468,7 +471,7 @@ body {
     width: 300px;
     height: 50px;
     margin-left: 40%;
-    top: 740px;
+    top: 710px;
     cursor: pointer;
     background: #c4c4c4;
 }
@@ -526,10 +529,10 @@ body {
     position: absolute;
     width: 1184px;
     height: 56px;
-    left: 20%;
+    left: 13%;
     top: 300px;
     text-align: center;
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 26px;
@@ -539,16 +542,14 @@ body {
 
 /* Enter code invoerveld  */
 .enter-code-input {
-    position: absolute;
-    width: 300px;
-    height: 53px;
-    left: 42%;
-    top: 480px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #94f0ff;
-    color: #94f0ff;
-    font-size: 16px;
+    position: absolute !important;
+    width: 300px !important;
+    height: 53px !important;
+    left: 42% !important;
+    top: 480px !important;
+    background-color: transparent !important;
+    color: #94f0ff !important;
+    font-size: 16px !important;
 }
 
 /* continue btn */
@@ -733,17 +734,15 @@ body {
 }
 
 .auto-title {
-    position: absolute;
-    width: 170px;
-    height: 48px;
-    left: 449px;
-    top: 147px;
-    border: 1px solid #94f0ff;
-    border-radius: 5px;
-    background-color: transparent;
-    text-align: center;
-    color: white;
-    font-size: 16px;
+    position: absolute !important;
+    width: 170px !important;
+    height: 48px !important;
+    left: 449px !important;
+    top: 147px !important;
+    background-color: transparent !important;
+    text-align: center !important;
+    color: white !important;
+    font-size: 16px !important;
 }
 
 .auto-subject {
@@ -819,57 +818,41 @@ body {
 }
 
 .ex-mail {
-    position: absolute;
-    width: 226px;
-    height: 48px;
-    left: 20px;
-    top: 60px;
-    border: 1px solid #94F0FF;
-    border-radius: 5px;
-    text-align: center;
-    color: white;
-    font-size: 16px;
-    background-color: #456064;
+    position: absolute !important;
+    width: 226px !important;
+    height: 48px !important;
+    left: 20px !important;
+    top: 60px !important;
+    text-align: center !important;
+    font-size: 16px !important;
 }
 
 .ex-mail-1-2 {
-    position: absolute;
-    width: 226px;
-    height: 48px;
-    left: 20px;
-    top: 130px;
-    border: 1px solid #94F0FF;
-    border-radius: 5px;
-    text-align: center;
-    color: white;
-    background-color: #456064;
+    position: absolute !important;
+    width: 226px !important;
+    height: 48px !important;
+    left: 20px !important;
+    top: 130px !important;
+    text-align: center !important;
 }
 
 .ex-mail-2 {
-    position: absolute;
-    width: 226px;
-    height: 48px;
-    left: 20px;
-    top: 60px;
-    border: 1px solid #94F0FF;
-    border-radius: 5px;
-    text-align: center;
-    color: white;
-    font-size: 16px;
-    background-color: #456064;
+    position: absolute !important;
+    width: 226px !important;
+    height: 48px !important;
+    left: 20px !important;
+    top: 60px !important;
+    text-align: center !important;
+    font-size: 16px !important;
 }
 
 .ex-mail-2-2 {
-    position: absolute;
-    width: 226px;
-    height: 48px;
-    left: 20px;
-    top: 130px;
-    border: 1px solid #94F0FF;
-    border-radius: 5px;
-    text-align: center;
-    color: white;
-    background-color: #456064;
+    position: absolute !important;
+    width: 226px !important;
+    height: 48px !important;
+    left: 20px !important;
+    top: 130px !important;
+    text-align: center !important;
 }
 
 .plusicon-auto-add {
@@ -1028,7 +1011,7 @@ hr {
     position: absolute;
     width: 313px;
     height: 60px;
-    margin-left: 38.5%;
+    margin-left: 38%;
     top: 10%;
     font-family: Roboto, sans-serif;
     font-style: normal;
@@ -1042,31 +1025,25 @@ hr {
 }
 
 .settings-email {
-    position: absolute;
-    width: 170px;
-    height: 40px;
-    left: 690px;
-    top: 300px;
-    border: 1px solid #94f0ff;
-    border-radius: 5px;
-    background-color: transparent;
-    text-align: center;
-    color: white;
-    font-size: 16px;
+    position: absolute !important;
+    width: 170px !important;
+    height: 40px !important;
+    left: 690px !important;
+    top: 300px !important;
+    background-color: transparent !important;
+    text-align: center !important;
+    font-size: 16px !important;
 }
 
 .settings-username {
-    position: absolute;
-    width: 170px;
-    height: 40px;
-    left: 690px;
-    top: 380px;
-    border: 1px solid #94f0ff;
-    border-radius: 5px;
-    background-color: transparent;
-    text-align: center;
-    color: white;
-    font-size: 16px;
+    position: absolute !important;
+    width: 170px !important;
+    height: 40px !important;
+    left: 690px !important;
+    top: 380px !important;
+    background-color: transparent !important;
+    text-align: center !important;
+    font-size: 16px !important;
 }
 
 .settings-save-btn {
