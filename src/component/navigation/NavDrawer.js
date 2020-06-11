@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import clsx from 'clsx';
+import {Redirect} from "react-router-dom"
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
 import './navbar.css'
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -23,6 +26,8 @@ import ExitToAppSharpIcon from '@material-ui/icons/ExitToAppSharp';
 
 import logo from "../../img/Icon.png";
 import spamUser from "../../img/SpammedUser.png"
+
+import {logoutUser} from "../../redux/actions/userActions"
 
 const drawerWidth = 240;
 
@@ -128,10 +133,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NavDrawer({children}) {
+function NavDrawer(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+
+    const {children, authenticated} = props
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -168,6 +175,13 @@ export default function NavDrawer({children}) {
             marginLeft: 8
         }
     };
+
+    const handleSignOut = (e) => {
+        e.preventDefault()
+        if (authenticated) {
+            props.logoutUser()
+        }
+    }
 
     return (
         <div className={classes.root}>
@@ -247,9 +261,13 @@ export default function NavDrawer({children}) {
                                     :
                                 index === 5
                                     ?
-                                        <a href={'/signout'}>
-                                            <ExitToAppSharpIcon className={clsx(classes.icons)}/>
-                                        </a>
+
+                                    <Fragment>
+                                        <ExitToAppSharpIcon className={clsx(classes.icons)} onClick={handleSignOut}/>
+                                    </Fragment>
+                                        /*<a href={'/signout'}>
+                                            <ExitToAppSharpIcon className={clsx(classes.icons)} onClick={handleSignOut}/>
+                                        </a>*/
                                     :
                                     null
                                 }
@@ -266,3 +284,14 @@ export default function NavDrawer({children}) {
         </div>
     );
 }
+
+NavDrawer.propTypes = {
+    authenticated: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    authenticated: state.user.authenticated
+})
+
+
+export default connect(mapStateToProps, { logoutUser })(NavDrawer)
