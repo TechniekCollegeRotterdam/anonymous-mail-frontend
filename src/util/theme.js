@@ -9,7 +9,12 @@ export default {
             root: {
                 backgroundColor: 'transparent'
             }
-        }
+        }/* ,
+        MuiFormControl: {
+            root: {
+                position: 'static'
+            }
+        } */
     },
     palette: {
         primary: {
@@ -46,6 +51,17 @@ export default {
         },
         button: {
             backgroundColor: '#4A934D'
-        }
+        },
+        customError: {
+            color: 'red',
+            fontSize: '0.8rem',
+            marginTop: 10
+        },
+        progress: {
+            position: 'absolute'
+        },
+        textField: {
+            margin: '10px auto',
+        },
     }
 }

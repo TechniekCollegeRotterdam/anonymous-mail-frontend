@@ -28,7 +28,27 @@ import Dashboard from './component/dashboardmap/Dashboard';
 import AutoReplies from './component/automap/AutoReplies';
 import SpammedUsers from './component/spammap/spammedUsers';
 import Settings from './component/settingsmap/settings';
-import Signout from './component/signoutmap/Signout';
+
+import axios from 'axios'
+import jwtDecode from "jwt-decode"
+import { SET_AUTHENTICATED } from './redux/types'
+
+axios.defaults.baseURL = 'https://europe-west2-anonymous-email-app.cloudfunctions.net/api' 
+
+const token = localStorage.FBToken
+if (token){
+  const decodedToken = jwtDecode(token)
+  if (decodedToken.exp * 1000 < Date.now()) {
+    // TODO:
+    //store.dispatch(logoutUser())
+    window.location.href = '/login'
+  } else {
+    store.dispatch({ type: SET_AUTHENTICATED })
+    axios.defaults.headers.common['Authorization'] = token
+    // TODO:
+    //store.dispatch(getGmailData())
+  }
+}
 
 const theme = createMuiTheme(themeFile)
 
