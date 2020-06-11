@@ -14,6 +14,7 @@ import btn2 from "../../img/Sign in.png";
 
 // CSS
 import "../../main.css";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -62,34 +63,16 @@ export default function SignUp() {
             </AppBar>
 
             <h2 className="signup-text">Signup</h2>
-            <form>
-                <div>
-                    <input
-                        type="email"
-                        placeholder="E-mail"
-                        // value={this.state.email}
-                        // onChange={this.handleChange}
-                        className="Email"
-                    />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        // value={this.state.username}
-                        // onChange={this.handleChange}
-                        className="Username"
-                    />
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        // value={this.state.password}
-                        // onChange={this.handleChange}
-                        className="Password"
-                    />
-                </div>
+            <form noValidate autoComplete="off">
+                <TextField className="Email-signup" type="email" id="outlined-basic" label="E-mail"
+                           variant="outlined"
+                />
+                <TextField className="Username" type="text" id="outlined-basic" label="Username"
+                           variant="outlined"
+                />
+                <TextField className="Password" type="password" id="outlined-basic" label="Password"
+                           variant="outlined"
+                />
             </form>
             <p className="log-in">Already have an account? Log in</p>
             <a href="/verifyEmail">

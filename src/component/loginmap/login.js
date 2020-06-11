@@ -23,6 +23,7 @@ import btn2 from "../../img/Login.png";
 
 // CSS
 import "../../main.css";
+import TextField from "@material-ui/core/TextField";
 
 const styles = (theme) => ({
     ...theme.spreadThis,
@@ -355,58 +356,6 @@ class Login extends Component {
                         Anonymous Mail &copy; 2020 - All rights reserved
                 </span>
                 </footer>
-
-
-
-
-                {/* <h2 className="signup-text">Login</h2>
-                <form style={{ position: 'relative', height: '100vh' }} onSubmit={this.handleSubmit}
-                    noValidate
-                >
-                    <TextField
-                        name={"email"}
-                        type="email"
-                        label={"Email"}
-                        className={classes.email}
-                        helperText={errors.email}
-                        error={errors.email ? true : false}
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                        autoFocus={true}
-                    />
-                    <FormControl error={errors.password ? true : false}>
-                        <TextField
-                            className={classes.password}
-                            id={"password"}
-                            label="Password"
-                            type={this.state.showPassword ? 'text' : 'password'}
-                            value={this.state.password}
-                            name={"password"}
-                            fullWidth
-                            onChange={this.handleChange}
-                        />
-                        <FormHelperText>{errors.password}</FormHelperText>
-                    </FormControl>
-
-                    {errors.general && (
-                        <Typography variant={"body2"} className={classes.customError}>
-                            {errors.general}
-                        </Typography>
-                    )}
-
-                    <Button
-                        type={"submit"}
-                        variant={"contained"}
-                        color={"primary"}
-                        className={classes.LoginButton}
-                        disabled={loading}
-                    >
-                        Login
-                            {loading && (
-                            <CircularProgress size={30} className={classes.progress} />
-                        )}
-                    </Button>
-                </form> */}
             </div>
         );
     }

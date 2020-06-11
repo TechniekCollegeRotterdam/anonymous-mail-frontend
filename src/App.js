@@ -7,13 +7,13 @@ import {
 } from "react-router-dom";
 
 // Redux
-import { Provider } from 'react-redux'
-import store from './redux/store'
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 // Material-UI
 import { makeStyles } from "@material-ui/core/styles";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
-import themeFile from "./util/theme"
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import themeFile from "./util/theme";
 
 // CSS
 import './main.css';
@@ -22,8 +22,8 @@ import './main.css';
 import Home from "./Home";
 import SignUp from "./component/signupmap/signup";
 import Login from "./component/loginmap/login";
-import verifyEmail from "./component/signupmap/verifyEmail";
-import verifyLogin from "./component/loginmap/verifyLogin";
+import VerifyEmail from "./component/signupmap/verifyEmail";
+import VerifyLogin from "./component/loginmap/verifyLogin";
 import Dashboard from './component/dashboardmap/Dashboard';
 import AutoReplies from './component/automap/AutoReplies';
 import SpammedUsers from './component/spammap/spammedUsers';
@@ -77,8 +77,8 @@ export default function App() {
               <Route exact path="/" component={Home} />
               <Route path='/signup' component={SignUp} />
               <Route path='/login' component={Login} />
-              <Route path='/verifyEmail' component={verifyEmail} />
-              <Route path='/verifyLogin' component={verifyLogin} />
+              <Route path='/verifyEmail' component={VerifyEmail} />
+              <Route path='/verifyLogin' component={VerifyLogin} />
               <Route path='/dashboard' component={Dashboard} />
               <Route path='/settings' component={Settings} />
               <Route path='/autoreplies' component={AutoReplies} />
