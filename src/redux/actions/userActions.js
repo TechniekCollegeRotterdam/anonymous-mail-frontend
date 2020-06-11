@@ -8,9 +8,27 @@ export const loginUser = (loginData, history) => (dispatch) => {
         .then((res) => {
             setAuthenicationHeader(res.data.token)
             //dispatch(getUserData())
-            //dispatch({ type: CLEAR_ERRORS})
+            dispatch({ type: CLEAR_ERRORS})
             // Redirect to homepage if login successful
             history.push('/dashboard');
+        })
+        .catch((err) => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data
+            })
+        })
+}
+
+export const signUpUser = (newUserData, history) => (dispatch) => {
+    dispatch({ type: LOADING_UI })
+    axios
+        .post('/signUpWithEmailAndPassword', newUserData)
+        .then((res) => {
+            setAuthenicationHeader(res.data.token)
+            //dispatch(getUserData())
+            dispatch({ type: CLEAR_ERRORS })
+            history.push('/dashboard')
         })
         .catch((err) => {
             dispatch({
