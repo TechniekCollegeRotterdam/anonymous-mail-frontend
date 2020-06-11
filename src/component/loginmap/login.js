@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import clsx from 'clsx'
-import PropTypes from 'prop-types';
-import { connect } from "react-redux";
-import { loginUser } from "../../redux/actions/userActions";
+import {connect} from "react-redux";
+import {loginUser} from "../../redux/actions/userActions";
 // MUI stuff
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
@@ -45,17 +44,9 @@ class Login extends Component {
         email: ''
     }
 
-    /* componentWillReceiveProps(nextProps, nextContext) {
+    componentWillReceiveProps(nextProps, nextContext) {
         if (nextProps.ui.errors)
-            this.setState({ errors: nextProps.ui.errors })
-    } */
-
-    handleClickShowPassword = () => {
-        this.setState({ ...this.state, showPassword: !this.state.showPassword })
-    }
-
-    handleMouseDownPassword = (e) => {
-        e.preventDefault()
+            this.setState({errors: nextProps.ui.errors})
     }
 
     handleChange = (e) => {
@@ -74,8 +65,8 @@ class Login extends Component {
     }
 
     render() {
-        const { classes, ui: { loading } } = this.props
-        const { errors } = this.state
+        const {classes, ui: {loading}} = this.props
+        const {errors} = this.state
 
         return (
             <div className={classes.root}>
@@ -88,7 +79,7 @@ class Login extends Component {
                             aria-label="menu"
                         />
                         <Typography variant="h6" className={clsx(classes.title)}>
-                            <a href="/"><img src={logo} width="70" height="50" alt="logo" /></a>
+                            <a href="/"><img src={logo} width="70" height="50" alt="logo"/></a>
                         </Typography>
                         <Button color="inherit">
                             <a href="/" className="nav-link">
@@ -107,7 +98,6 @@ class Login extends Component {
                         </Button>
                     </Toolbar>
                 </AppBar>
-
 
 
                 <h2 className="signup-text">Login</h2>
@@ -167,8 +157,8 @@ class Login extends Component {
                         disabled={loading}
                     >
                         Login
-                            {loading && (
-                            <CircularProgress size={30} className={classes.progress} />
+                        {loading && (
+                            <CircularProgress size={30} className={classes.progress}/>
                         )}
                     </Button>
                 </form>
@@ -181,13 +171,6 @@ class Login extends Component {
             </div>
         );
     }
-}
-
-Login.propTypes = {
-    classes: PropTypes.object.isRequired,
-    loginUser: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    ui: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
