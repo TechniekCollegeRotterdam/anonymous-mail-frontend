@@ -18,23 +18,6 @@ export const loginUser = (loginData, history) => (dispatch) => {
                 payload: err.response.data
             })
         })
-    /* dispatch({ type: LOADING_UI })
-    axios
-        .post('/loginWithEmailAndPassword', loginData)
-        .then((res) => {
-            setAuthenicationHeader(res.data.token)
-            //dispatch(getGmailData())
-            dispatch({ type: CLEAR_ERRORS})
-            // Redirect to dashboard if login successful
-            window.location.href = '/dashboard'
-        })
-        .catch((err) => {
-            console.log(err)
-            dispatch({
-                type: SET_ERRORS,
-                payload: err.data
-            })
-        }) */
 }
 
 const setAuthenicationHeader = (token) => {
