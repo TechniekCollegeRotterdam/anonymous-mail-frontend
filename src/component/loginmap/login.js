@@ -118,6 +118,7 @@ class Login extends Component {
                     />
 
                     <TextField
+                        type="password"
                         className="Password2"
                         id="outlined-basic"
                         label="Password"
