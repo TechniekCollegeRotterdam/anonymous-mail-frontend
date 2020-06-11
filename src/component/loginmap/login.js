@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import clsx from 'clsx'
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../../redux/actions/userActions";
 // MUI stuff
@@ -13,7 +12,6 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import InputBase from "@material-ui/core/InputBase";
 
 // Image
 import logo from "../../img/Icon.png";
