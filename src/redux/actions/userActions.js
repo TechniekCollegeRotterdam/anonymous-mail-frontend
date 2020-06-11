@@ -1,4 +1,4 @@
-import {LOADING_UI, SET_ERRORS, CLEAR_ERRORS} from '../types'
+import {LOADING_UI, SET_ERRORS, CLEAR_ERRORS, SET_UNAUTHENTICATED} from '../types'
 import axios from 'axios';
 
 export const loginUser = (loginData, history) => (dispatch) => {
@@ -36,6 +36,13 @@ export const signUpUser = (newUserData, history) => (dispatch) => {
                 payload: err.response.data
             })
         })
+}
+
+export const logoutUser = (history) => (dispatch) => {
+    localStorage.removeItem('FBToken')
+    delete axios.defaults.headers.common['Authorization']
+    dispatch({ type: SET_UNAUTHENTICATED })
+    window.location.href = '/'
 }
 
 const setAuthenicationHeader = (token) => {

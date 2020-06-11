@@ -32,6 +32,7 @@ import Settings from './component/settingsmap/settings';
 import axios from 'axios'
 import jwtDecode from "jwt-decode"
 import { SET_AUTHENTICATED } from './redux/types'
+import { logoutUser } from "./redux/actions/userActions";
 
 axios.defaults.baseURL = 'https://europe-west2-anonymous-email-app.cloudfunctions.net/api' 
 
@@ -39,8 +40,7 @@ const token = localStorage.FBToken
 if (token){
   const decodedToken = jwtDecode(token)
   if (decodedToken.exp * 1000 < Date.now()) {
-    // TODO:
-    //store.dispatch(logoutUser())
+    store.dispatch(logoutUser())
     window.location.href = '/login'
   } else {
     store.dispatch({ type: SET_AUTHENTICATED })
