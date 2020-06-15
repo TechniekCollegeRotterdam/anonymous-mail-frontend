@@ -178,7 +178,7 @@ function NavDrawer(props) {
 
     const handleSignOut = (e) => {
         e.preventDefault()
-        if (authenticated) {
+        if (!authenticated) {
             props.logoutUser()
         }
     }
