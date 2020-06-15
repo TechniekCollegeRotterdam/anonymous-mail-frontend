@@ -9,12 +9,17 @@ export default {
             root: {
                 backgroundColor: 'transparent'
             }
-        }/* ,
-        MuiFormControl: {
+        },
+        MuiSkeleton: {
             root: {
-                position: 'static'
+                backgroundColor: 'rgba(148, 240, 255, 0.23)'
+            },
+            wave: {
+                '&::after': {
+                    background: 'linear-gradient(90deg, transparent, rgba(101, 128, 141, 0.22), transparent)'
+                }
             }
-        } */
+        }
     },
     palette: {
         primary: {
