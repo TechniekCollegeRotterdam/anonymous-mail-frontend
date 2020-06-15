@@ -133,6 +133,12 @@ class Login extends Component {
 
                     {/* TODO:Show general error message */}
 
+                    {errors.general && (
+                        <Typography variant={"body2"}>
+                            {errors.general}
+                        </Typography>
+                    )}
+
                     {/* {errors.general
                         ?
                         (
@@ -175,7 +181,6 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user,
     ui: state.ui
 })
 
