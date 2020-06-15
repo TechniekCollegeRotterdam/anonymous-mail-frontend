@@ -2,7 +2,6 @@ import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "../types";
 
 const initialState = {
     authenticated: false,
-    loading: false,
     credentials: {}
 }
 
