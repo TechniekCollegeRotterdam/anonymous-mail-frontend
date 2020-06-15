@@ -162,7 +162,7 @@ class SignUp extends Component {
                         )}
                     </Button>
                 </form>
-                <p className="log-in">Already have an account? Log in</p>
+                <p className="log-in">Already have an account? &nbsp;<a href="/login" className="log-in-2">Log in</a></p>
     
                 <footer className="footer-signup">
                     <span className="copyright">
