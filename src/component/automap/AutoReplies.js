@@ -81,8 +81,6 @@ function AutoReplies(props) {
                         <TextField className="ex-mail" type="text" id="outlined-basic" label="johndoe@gmail.com"
                                    variant="outlined"
                         />
-                        <TextField className="ex-mail-1-2" type="text" id="outlined-basic" variant="outlined"/>
-                        <img className= "plusicon-auto-add" alt="plus icon" src={plus} />
                     </div>
                     <button className="auto-save-btn">Save</button>
                     </div>
@@ -99,8 +97,6 @@ function AutoReplies(props) {
                             <TextField className="ex-mail-2" type="text" id="outlined-basic" label="janedoe@gmail.com"
                                        variant="outlined"
                             />
-                            <TextField className="ex-mail-2-2" type="text" id="outlined-basic" variant="outlined"/>
-                            <img className= "plusicon-auto-add-2" alt="plus icon" src={plus} />
                         </div>
                         <button className="auto-save-btn-2">Save</button>
                     </div>
