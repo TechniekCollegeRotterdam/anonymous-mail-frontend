@@ -107,7 +107,7 @@ class Login extends Component {
                         name={"email"}
                         type="email"
                         label="E-mail"
-                        className="Email-login"
+                        className={clsx("Email-login", classes.textColors)}
                         variant="outlined"
                         id="outlined-basic"
                         helperText={errors.email}
@@ -119,7 +119,7 @@ class Login extends Component {
 
                     <TextField
                         type="password"
-                        className="Password2"
+                        className={clsx("Password2", classes.textColors)}
                         id="outlined-basic"
                         label="Password"
                         variant="outlined"
