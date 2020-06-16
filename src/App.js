@@ -33,6 +33,7 @@ import axios from 'axios'
 import jwtDecode from "jwt-decode"
 import { SET_AUTHENTICATED } from './redux/types'
 import { logoutUser } from "./redux/actions/userActions";
+import AuthRoute from "./util/AuthRoute";
 
 axios.defaults.baseURL = 'https://europe-west2-anonymous-email-app.cloudfunctions.net/api' 
 
@@ -79,7 +80,7 @@ export default function App() {
               <Route path='/login' component={Login} />
               <Route path='/verifyEmail' component={VerifyEmail} />
               <Route path='/verifyLogin' component={VerifyLogin} />
-              <Route path='/dashboard' component={Dashboard} />
+              <AuthRoute exact path='/dashboard' component={Dashboard} />
               <Route path='/settings' component={Settings} />
               <Route path='/autoreplies' component={AutoReplies} />
               <Route path='/spammedUsers' component={SpammedUsers} />
