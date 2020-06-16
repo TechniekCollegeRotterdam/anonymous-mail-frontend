@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useState, useEffect, Component} from 'react';
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import SendIcon from '@material-ui/icons/Send';
@@ -8,9 +8,12 @@ import plus from "../../img/plus.png";
 import NavDrawer from "../navigation/NavDrawer";
 import Modal from "../modals/Modals"
 import LoadingSkeleton from "../skeleton/Skeleton";
+import Typography from "@material-ui/core/Typography";
 
 import {connect} from "react-redux";
-import {getGmailData} from "../../redux/actions/dataActions";
+import {getGmailData, sendMail} from "../../redux/actions/dataActions";
+import {render} from "react-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = (theme) => ({
     ...theme.spreadThis,
@@ -43,69 +46,148 @@ const styles = (theme) => ({
     }
 });
 
-function Dashboard(props) {
+class Dashboard extends Component {
 
-    useEffect(() => {
-        props.getGmailData()
-    }, [])
+    state = {
+        errors: {},
+        to: '',
+        subject: '',
+        message: ''
+    }
+    const
 
-    const {classes, data: {loading, gmailData: {inboxMessages, trashMessages, unreadMessages, readMessages, labels}}} = props
-
-    const modalDetails = () => {
-        return (
-            <Fragment>
-                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Title"}
-                           fullWidth/>
-                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Subject"}
-                           fullWidth/>
-                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Body"}
-                           fullWidth multiline={true}/>
-                <Button
-                    className={clsx(classes.button, classes.textColors)}
-                    variant="contained"
-                    endIcon={<SendIcon>send</SendIcon>}
-                >
-                    Send
-                </Button>
-            </Fragment>
-        )
+    componentDidMount() {
+        this.props.getGmailData()
     }
 
-    return (
-        <NavDrawer>
-            <h2 className="overview"> Overview </h2>
-            <div className={clsx(classes.container)}>
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        const mailData = {
+            to: this.state.to,
+            subject: this.state.subject,
+            message: this.state.message
+        }
+        this.props.sendMail(mailData)
+    }
+
+    render() {
+
+        const {
+            classes,
+            data:
                 {
-                    loading
-                        ?
-                        <LoadingSkeleton/>
-                        :
-                        (
-                            <Fragment>
-                                <p className={clsx(classes.extra)}> Inbox: {`${inboxMessages}`} emails </p>
-                                <p className={clsx(classes.extra)}> Trash: {`${trashMessages}`} mails </p>
-                                <p className={clsx(classes.extra)}> Read: {`${readMessages}`} emails </p>
-                                <p className={clsx(classes.extra)}> Unread: {`${unreadMessages}`} emails </p>
-                                <p className={clsx(classes.extra)}> Labels: {`${labels}`} </p>
-                            </Fragment>
-                        )
+                    loading,
+                    gmailData: {inboxMessages, trashMessages, unreadMessages, readMessages, labels},
+                    sendMailMessage: { message }
                 }
-                <div className={clsx(classes.plusicon)}>
-                    <Modal
-                        title="New Email"
-                        rest={modalDetails()}
+        } = this.props
+
+        let modalDetails;
+        modalDetails = () => {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <TextField
+                        variant="outlined"
+                        name={'to'}
+                        value={this.state.to || ''}
+                        className={clsx(classes.inputs, classes.textColors)}
+                        placeholder={"To"}
+                        fullWidth
+                        onChange={this.handleChange}
+                    />
+                    <TextField
+                        variant="outlined"
+                        name={'subject'}
+                        value={this.state.subject || ''}
+                        className={clsx(classes.inputs, classes.textColors)}
+                        placeholder={"Subject"}
+                        fullWidth
+                        onChange={this.handleChange}
+                    />
+                    <TextField
+                        variant="outlined"
+                        name={'message'}
+                        value={this.state.message || ''}
+                        className={clsx(classes.inputs, classes.textColors)}
+                        placeholder={"Message"}
+                        fullWidth
+                        multiline={true}
+                        onChange={this.handleChange}/>
+
+                    {!loading && (
+                        <Typography
+                            style={{ marginBottom: 20, marginTop: 10 }}
+                            variant={'body2'}
+                        >
+                            {message}
+                        </Typography>
+                    )}
+
+                    <Button
+                        type={'submit'}
+                        className={clsx(classes.button, classes.textColors)}
+                        variant="contained"
+                        endIcon={<SendIcon>send</SendIcon>}
+                        disabled={loading}
                     >
-                        <img className={clsx(classes.plusicon)} alt="plus icon" src={plus}/>
-                    </Modal>
+                        Send
+
+                        {loading && (
+                            <CircularProgress size={30} className={classes.progress}/>
+                        )}
+                    </Button>
+                </form>
+            )
+        }
+
+        return (
+            <NavDrawer>
+                <h2 className="overview"> Overview </h2>
+                <div className={clsx(classes.container)}>
+
+                    {
+                        loading
+                            ?
+                            <LoadingSkeleton/>
+                            :
+                            (
+                                <Fragment>
+                                    <p className={clsx(classes.extra)}> Inbox: {`${inboxMessages}`} emails </p>
+                                    <p className={clsx(classes.extra)}> Trash: {`${trashMessages}`} mails </p>
+                                    <p className={clsx(classes.extra)}> Read: {`${readMessages}`} emails </p>
+                                    <p className={clsx(classes.extra)}> Unread: {`${unreadMessages}`} emails </p>
+                                    <p className={clsx(classes.extra)}> Labels: {`${labels}`} </p>
+                                </Fragment>
+                            )
+                    }
+                    <div className={clsx(classes.plusicon)}>
+                        <Modal
+                            title="New Email"
+                            rest={modalDetails()}
+                        >
+                            <img className={clsx(classes.plusicon)} alt="plus icon" src={plus}/>
+                        </Modal>
+                    </div>
                 </div>
-            </div>
-        </NavDrawer>
-    )
+            </NavDrawer>
+        )
+    }
+}
+
+const mapActionsToProps = {
+    getGmailData,
+    sendMail
 }
 
 const mapStateToProps = (state) => ({
     data: state.data
 })
 
-export default connect(mapStateToProps, {getGmailData})(withStyles(styles)(Dashboard))
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Dashboard))

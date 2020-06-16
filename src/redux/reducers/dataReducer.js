@@ -1,8 +1,9 @@
-import {LOADING_DATA, SET_GMAIL_DATA} from '../types'
+import {LOADING_DATA, SEND_MAIL, SET_GMAIL_DATA} from '../types'
 
 const initialState = {
     loading: false,
-    gmailData: {}
+    gmailData: {},
+    sendMailMessage: ''
 }
 
 export default function (state = initialState, action) {
@@ -18,6 +19,13 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 gmailData: action.payload
+            }
+
+        case SEND_MAIL:
+            return {
+                ...state,
+                loading: false,
+                sendMailMessage: action.payload
             }
 
         default:
