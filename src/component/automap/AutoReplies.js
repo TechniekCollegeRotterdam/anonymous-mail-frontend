@@ -1,5 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import clsx from 'clsx';
+import passomatic from "passomatic"
+import {connect} from "react-redux";
+import {getAutoReplyData} from "../../redux/actions/dataActions"
 import plus from "../../img/plus.png";
 import NavDrawer from "../navigation/NavDrawer"
 import Modal from "../modals/Modals"
@@ -40,76 +43,93 @@ const styles = (theme) => ({
     }
 });
 
-function AutoReplies(props) {
-    const {classes} = props
+class AutoReplies extends Component {
 
-    const modalDetails = () => {
-        return(
-            <Fragment>
-                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Title"} fullWidth/>
-                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Subject"} fullWidth/>
-                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Body"} fullWidth multiline={true}/>
-                <Container className={clsx(classes.autoContainer)}>
-                    <Typography style={{marginBottom: 10}}>Send to:</Typography>
-                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} placeholder="janedoe@gmail.com" fullWidth/>
-                    <Button 
-                        className={clsx(classes.button, classes.textColors)}
-                        variant="contained"
-                    >
-                        Save
-                    </Button>
-                </Container>
-            </Fragment>
-        )
+    componentDidMount() {
+        this.props.getAutoReplyData()
     }
 
-    return (
-        <NavDrawer>
-            <h2 className="overview">Auto replies</h2>
-            <div className={clsx(classes.container)}>
-                <form noValidate autoComplete="off">
-                <div className="auto-btns">
-                    <TextField className="auto-title" type="text" id="outlined-basic" label="Title"
-                               variant="outlined"
-                    />
-                    <TextField className="auto-subject" type="text" id="outlined-basic" label="Subject"
-                               variant="outlined"
-                    />
-                    <div className="auto-body"></div>
-                    <div className="send-to">
-                        <span>Send to:</span>
-                        <TextField className="ex-mail" type="text" id="outlined-basic" label="johndoe@gmail.com"
-                                   variant="outlined"
-                        />
-                    </div>
-                    <button className="auto-save-btn">Save</button>
-                    </div>
-                    <div className="auto-btns-2">
-                        <TextField className="auto-title" type="text" id="outlined-basic" label="Title"
-                                   variant="outlined"
-                        />
-                        <TextField className="auto-subject" type="text" id="outlined-basic" label="Subject"
-                                   variant="outlined"
-                        />
-                        <div className="auto-body-2"></div>
-                        <div className="send-to-2">
-                            <span>Send to:</span>
-                            <TextField className="ex-mail-2" type="text" id="outlined-basic" label="janedoe@gmail.com"
-                                       variant="outlined"
-                            />
-                        </div>
-                        <button className="auto-save-btn-2">Save</button>
-                    </div>
-                    <Modal
-                        title="New auto reply"
-                        rest={modalDetails()}
-                    >
-                        <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
-                    </Modal>
-                </form>
-            </div>
-        </NavDrawer>
-    );
+    render() {
+
+        const {classes, data: { autoReplyData } } = this.props
+
+        const modalDetails = () => {
+            return(
+                <Fragment>
+                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Title"} fullWidth/>
+                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Subject"} fullWidth/>
+                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Body"} fullWidth multiline={true}/>
+                    <Container className={clsx(classes.autoContainer)}>
+                        <Typography style={{marginBottom: 10}}>Send to:</Typography>
+                        <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} placeholder="janedoe@gmail.com" fullWidth/>
+                        <Button
+                            className={clsx(classes.button, classes.textColors)}
+                            variant="contained"
+                        >
+                            Save
+                        </Button>
+                    </Container>
+                </Fragment>
+            )
+        }
+
+        return (
+            <NavDrawer>
+                <h2 className="overview">Auto replies</h2>
+                <div className={clsx(classes.container)}>
+                    <form noValidate autoComplete="off">
+
+                        {
+                            autoReplyData.map((autoReply) => {
+                                return (
+                                    <div key={passomatic(1)} className="auto-btns">
+                                        <TextField
+                                            className="auto-title"
+                                            type="text"
+                                            id="outlined-basic"
+                                            label="Title"
+                                            value={autoReply.title || ''}
+                                            variant="outlined"
+                                        />
+                                        <TextField
+                                            className="auto-subject"
+                                            type="text"
+                                            id="outlined-basic"
+                                            label="Subject"
+                                            value={autoReply.subject || ''}
+                                            variant="outlined"
+                                        />
+                                        <div className="auto-body" style={{padding: 10}}>{autoReply.body}</div>
+                                        <div className="send-to">
+                                            <span>Send to:</span>
+                                            <TextField
+                                                className="ex-mail"
+                                                type="text"
+                                                id="outlined-basic"
+                                                label="E.g. johndoe@gmail.com"
+                                                value={autoReply.to || ''}
+                                                variant="outlined"
+                                            />
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                        <Modal
+                            title="New auto reply"
+                            rest={modalDetails()}
+                        >
+                            <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
+                        </Modal>
+                    </form>
+                </div>
+            </NavDrawer>
+        );
+    }
 }
 
-export default (withStyles(styles)(AutoReplies))
+const mapStateToProps = (state) => ({
+    data: state.data
+})
+
+export default connect(mapStateToProps, { getAutoReplyData })(withStyles(styles)(AutoReplies))

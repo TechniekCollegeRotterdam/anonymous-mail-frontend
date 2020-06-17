@@ -1,4 +1,4 @@
-import {LOADING_DATA, SEND_MAIL, SET_ERRORS, SET_GMAIL_DATA} from '../types'
+import {LOADING_DATA, SEND_MAIL, SET_ERRORS, SET_GMAIL_DATA, SET_AUTO_REPLY_DATA} from '../types'
 import axios from 'axios';
 
 export const getGmailData = () => (dispatch) => {
@@ -30,5 +30,24 @@ export const sendMail = (mailData) => (dispatch) => {
                 type: SET_ERRORS,
                 payload: err.response.data
             })
+        })
+}
+
+export const getAutoReplyData = () => (dispatch) => {
+    dispatch({ type: LOADING_DATA })
+    axios
+        .get('/getAutoReplies')
+        .then((res) => {
+            dispatch({
+                type: SET_AUTO_REPLY_DATA,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: SET_AUTO_REPLY_DATA,
+                payload: []
+            })
+            console.log(err)
         })
 }
