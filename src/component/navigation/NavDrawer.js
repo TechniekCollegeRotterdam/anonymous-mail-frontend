@@ -178,7 +178,7 @@ function NavDrawer(props) {
 
     const handleSignOut = (e) => {
         e.preventDefault()
-        if (!authenticated) {
+        if (authenticated) {
             props.logoutUser()
         }
     }
@@ -265,9 +265,6 @@ function NavDrawer(props) {
                                     <Fragment>
                                         <ExitToAppSharpIcon className={clsx(classes.icons)} onClick={handleSignOut}/>
                                     </Fragment>
-                                        /*<a href={'/signout'}>
-                                            <ExitToAppSharpIcon className={clsx(classes.icons)} onClick={handleSignOut}/>
-                                        </a>*/
                                     :
                                     null
                                 }
