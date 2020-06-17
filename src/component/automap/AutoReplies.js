@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {getAutoReplyData} from "../../redux/actions/dataActions"
 import plus from "../../img/plus.png";
 import NavDrawer from "../navigation/NavDrawer"
+import LoadingSkeleton from "../skeleton/Skeleton";
 import Modal from "../modals/Modals"
 import withStyles from "@material-ui/core/styles/withStyles"
 import TextField from "@material-ui/core/TextField"
@@ -51,7 +52,7 @@ class AutoReplies extends Component {
 
     render() {
 
-        const {classes, data: { autoReplyData } } = this.props
+        const {classes, data: { autoReplyData, loading } } = this.props
 
         const modalDetails = () => {
             return(
@@ -80,40 +81,44 @@ class AutoReplies extends Component {
                     <form noValidate autoComplete="off">
 
                         {
-                            autoReplyData.map((autoReply) => {
-                                return (
-                                    <div key={passomatic(1)} className="auto-btns">
-                                        <TextField
-                                            className="auto-title"
-                                            type="text"
-                                            id="outlined-basic"
-                                            label="Title"
-                                            value={autoReply.title || ''}
-                                            variant="outlined"
-                                        />
-                                        <TextField
-                                            className="auto-subject"
-                                            type="text"
-                                            id="outlined-basic"
-                                            label="Subject"
-                                            value={autoReply.subject || ''}
-                                            variant="outlined"
-                                        />
-                                        <div className="auto-body" style={{padding: 10}}>{autoReply.body}</div>
-                                        <div className="send-to">
-                                            <span>Send to:</span>
+                            loading
+                                ?
+                                <LoadingSkeleton/>
+                                :
+                                autoReplyData.map((autoReply) => {
+                                    return (
+                                        <div key={passomatic(1)} className="auto-btns">
                                             <TextField
-                                                className="ex-mail"
+                                                className="auto-title"
                                                 type="text"
                                                 id="outlined-basic"
-                                                label="E.g. johndoe@gmail.com"
-                                                value={autoReply.to || ''}
+                                                label="Title"
+                                                value={autoReply.title || ''}
                                                 variant="outlined"
                                             />
+                                            <TextField
+                                                className="auto-subject"
+                                                type="text"
+                                                id="outlined-basic"
+                                                label="Subject"
+                                                value={autoReply.subject || ''}
+                                                variant="outlined"
+                                            />
+                                            <div className="auto-body" style={{padding: 10}}>{autoReply.body}</div>
+                                            <div className="send-to">
+                                                <span>Send to:</span>
+                                                <TextField
+                                                    className="ex-mail"
+                                                    type="text"
+                                                    id="outlined-basic"
+                                                    label="E.g. johndoe@gmail.com"
+                                                    value={autoReply.to || ''}
+                                                    variant="outlined"
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            })
+                                    )
+                                })
                         }
                         <Modal
                             title="New auto reply"
