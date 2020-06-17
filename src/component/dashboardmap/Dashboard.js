@@ -54,7 +54,11 @@ class Dashboard extends Component {
         subject: '',
         message: ''
     }
-    const
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.ui.errors)
+            this.setState({errors: nextProps.ui.errors})
+    }
 
     componentDidMount() {
         this.props.getGmailData()
@@ -89,13 +93,16 @@ class Dashboard extends Component {
                 }
         } = this.props
 
-        let modalDetails;
-        modalDetails = () => {
+        const { errors } = this.state
+
+        let modalDetails = () => {
             return (
                 <form onSubmit={this.handleSubmit}>
                     <TextField
                         variant="outlined"
                         name={'to'}
+                        helperText={errors.to}
+                        error={errors.to ? true : false}
                         value={this.state.to || ''}
                         className={clsx(classes.inputs, classes.textColors)}
                         placeholder={"To"}
@@ -105,6 +112,8 @@ class Dashboard extends Component {
                     <TextField
                         variant="outlined"
                         name={'subject'}
+                        helperText={errors.subject}
+                        error={errors.subject ? true : false}
                         value={this.state.subject || ''}
                         className={clsx(classes.inputs, classes.textColors)}
                         placeholder={"Subject"}
@@ -114,6 +123,8 @@ class Dashboard extends Component {
                     <TextField
                         variant="outlined"
                         name={'message'}
+                        helperText={errors.message}
+                        error={errors.message ? true : false}
                         value={this.state.message || ''}
                         className={clsx(classes.inputs, classes.textColors)}
                         placeholder={"Message"}
@@ -187,7 +198,8 @@ const mapActionsToProps = {
 }
 
 const mapStateToProps = (state) => ({
-    data: state.data
+    data: state.data,
+    ui: state.ui
 })
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Dashboard))
