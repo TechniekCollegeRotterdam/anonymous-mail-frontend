@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import clsx from 'clsx';
 import passomatic from "passomatic"
 import {connect} from "react-redux";
-import {getAutoReplyData} from "../../redux/actions/dataActions"
+import {getAutoReplyData, addAutoReply} from "../../redux/actions/dataActions"
 import plus from "../../img/plus.png";
 import NavDrawer from "../navigation/NavDrawer"
 import LoadingSkeleton from "../skeleton/Skeleton";
@@ -12,6 +12,7 @@ import TextField from "@material-ui/core/TextField"
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = (theme) => ({
     ...theme.spreadThis,
@@ -46,31 +47,136 @@ const styles = (theme) => ({
 
 class AutoReplies extends Component {
 
+    state = {
+        title: '',
+        body: '',
+        subject: '',
+        to: '',
+        errors: {}
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.ui.errors){
+            this.setState({
+                errors: nextProps.ui.errors
+            })
+        }
+        if (!nextProps.ui.errors && !nextProps.ui.loading) {
+            this.setState({
+                title: '',
+                body: '',
+                subject: '',
+                to: '',
+                errors: {}
+            })
+        }
+    }
+
     componentDidMount() {
         this.props.getAutoReplyData()
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        const autoReplyData = {
+            title: this.state.title,
+            body: this.state.body,
+            subject: this.state.subject,
+            to: this.state.to
+        }
+
+        this.props.addAutoReply(autoReplyData)
+    }
+
     render() {
 
-        const {classes, data: { autoReplyData, loading } } = this.props
+        const {classes, data: { autoReplyData, autoReplySendMessage: { message } , loading } } = this.props
+
+        const {errors} = this.state
 
         const modalDetails = () => {
             return(
-                <Fragment>
-                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Title"} fullWidth/>
-                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Subject"} fullWidth/>
-                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"Body"} fullWidth multiline={true}/>
+                <form onSubmit={this.handleSubmit}>
+                    <TextField
+                        name={'title'}
+                        helperText={errors.title}
+                        error={errors.title ? true : false}
+                        value={this.state.title || ''}
+                        variant="outlined"
+                        className={clsx(classes.inputs, classes.textColors)}
+                        label={"Title"}
+                        fullWidth
+                        onChange={this.handleChange}
+                    />
+                    <TextField
+                        name={'subject'}
+                        helperText={errors.subject}
+                        error={errors.subject ? true : false}
+                        value={this.state.subject || ''}
+                        variant="outlined"
+                        className={clsx(classes.inputs, classes.textColors)}
+                        label={"Subject"}
+                        fullWidth
+                        onChange={this.handleChange}
+                    />
+                    <TextField
+                        name={'body'}
+                        helperText={errors.body}
+                        error={errors.body ? true : false}
+                        value={this.state.body || ''}
+                        variant="outlined"
+                        className={clsx(classes.inputs, classes.textColors)}
+                        label={"Body"}
+                        fullWidth
+                        multiline={true}
+                        onChange={this.handleChange}
+                    />
+
                     <Container className={clsx(classes.autoContainer)}>
                         <Typography style={{marginBottom: 10}}>Send to:</Typography>
-                        <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} placeholder="janedoe@gmail.com" fullWidth/>
+                        <TextField
+                            name={'to'}
+                            helperText={errors.to}
+                            error={errors.to ? true : false}
+                            value={this.state.to || ''}
+                            variant="outlined"
+                            className={clsx(classes.inputs, classes.textColors)}
+                            placeholder="janedoe@gmail.com"
+                            fullWidth
+                            onChange={this.handleChange}
+                        />
+
+                        {!loading && (
+                            <Typography
+                                style={{ marginBottom: 20, marginTop: 10 }}
+                                variant={'body2'}
+                            >
+                                {message}
+                            </Typography>
+                        )}
+
                         <Button
+                            type={'submit'}
                             className={clsx(classes.button, classes.textColors)}
                             variant="contained"
+                            disabled={loading}
                         >
                             Save
+
+                            {loading && (
+                                <CircularProgress size={30} className={classes.progress}/>
+                            )}
+
                         </Button>
                     </Container>
-                </Fragment>
+                </form>
             )
         }
 
@@ -86,6 +192,7 @@ class AutoReplies extends Component {
                                 <LoadingSkeleton/>
                                 :
                                 autoReplyData.map((autoReply) => {
+                                    //console.log(autoReply)
                                     return (
                                         <div key={passomatic(1)} className="auto-btns">
                                             <TextField
@@ -133,8 +240,14 @@ class AutoReplies extends Component {
     }
 }
 
+const mapActionsToProps = {
+    getAutoReplyData,
+    addAutoReply
+}
+
 const mapStateToProps = (state) => ({
-    data: state.data
+    data: state.data,
+    ui: state.ui
 })
 
-export default connect(mapStateToProps, { getAutoReplyData })(withStyles(styles)(AutoReplies))
+export default connect(mapStateToProps, mapActionsToProps )(withStyles(styles)(AutoReplies))

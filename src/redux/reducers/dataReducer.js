@@ -1,10 +1,11 @@
-import {LOADING_DATA, SEND_MAIL, SET_GMAIL_DATA, SET_AUTO_REPLY_DATA} from '../types'
+import {LOADING_DATA, SEND_MAIL, SET_GMAIL_DATA, SET_AUTO_REPLY_DATA, ADD_AUTO_REPLY} from '../types'
 
 const initialState = {
     loading: false,
     gmailData: {},
     sendMailMessage: '',
-    autoReplyData: []
+    autoReplyData: [],
+    autoReplySendMessage: ''
 }
 
 export default function (state = initialState, action) {
@@ -34,6 +35,17 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 autoReplyData: action.payload
+            }
+
+        case ADD_AUTO_REPLY:
+            return {
+                ...state,
+                loading: false,
+                autoReplySendMessage: action.payload,
+                autoReplyData: [
+                    action.payload,
+                    ...state.autoReplyData
+                ]
             }
 
         default:
