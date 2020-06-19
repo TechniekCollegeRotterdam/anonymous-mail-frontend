@@ -82,8 +82,8 @@ export default function App() {
               <Route path='/verifyLogin' component={VerifyLogin} />
               <AuthRoute exact path='/dashboard' component={Dashboard} />
               <Route path='/settings' component={Settings} />
-              <Route path='/autoreplies' component={AutoReplies} />
-              <Route path='/spammedUsers' component={SpammedUsers} />
+              <AuthRoute path='/autoreplies' component={AutoReplies} />
+              <AuthRoute path='/spammedUsers' component={SpammedUsers} />
               <Route path='/signout'>
                 {<Redirect to="/" />}
               </Route>

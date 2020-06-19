@@ -1,6 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import clsx from 'clsx';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import passomatic from "passomatic"
+import dayjs from "dayjs";
+import {connect} from "react-redux";
+import {getSpammers} from "../../redux/actions/dataActions";
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import Table from '@material-ui/core/Table';
@@ -17,8 +21,10 @@ import SaveIcon from '@material-ui/icons/Save';
 import NavDrawer from "../navigation/NavDrawer"
 import Modal from "../modals/Modals"
 import plus from "../../img/plus.png";
+import LoadingSkeleton from "../skeleton/Skeleton";
 
-const useStyles = makeStyles({
+const styles = (theme) => ({
+    ...theme.spreadThis,
     list: {
         background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
         borderRadius: 2,
@@ -45,7 +51,7 @@ const useStyles = makeStyles({
         marginTop: 15,
         backgroundColor: '#4A934D'
     }
-});
+})
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -93,108 +99,149 @@ const rows = [
     createData('hacker@outlook.com', '25 march 2020')
 ];
 
-export default function SpammedUsers() {
-    const classes = useStyles();
+class SpammedUsers extends Component {
 
-    const addModal = () => {
-        return (
-            <Fragment>
-                <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"New spammer"} fullWidth/>
-                <Button
-                    className={clsx(classes.addButton)}
-                    variant="contained"
-                    startIcon={<SaveIcon/>}
-                >
-                    Save
-                </Button>
-            </Fragment>
-        )
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.ui.errors)
+            this.setState({errors: nextProps.ui.errors})
     }
 
-    const deleteModal = () => {
-        return (
-            <Fragment>
-                <Typography>
-                    Are you sure you want to remove this spammer?<br />
-                    Doing this will allow emails from this user to come in your inbox.
-                </Typography>
-                <Button
-                    className={clsx(classes.deleteButton)}
-                    variant="contained"
-                    startIcon={<DeleteIcon/>}
-                >
-                    Delete
-                </Button>
-            </Fragment>
-        )
+    componentDidMount() {
+        this.props.getSpammers()
     }
 
-    return (
-        <div>
-            <NavDrawer>
-                <h2 className="spammed-header">Spammed email addresses</h2>
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="customized table">
-                        <TableHead>
-                            <TableRow>
-                                <StyledTableCell>Email addresses:</StyledTableCell>
-                                <StyledTableCell align="right">Added at:</StyledTableCell>
-                                <StyledTableCell align="right"> </StyledTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rows.map((row) => (
-                                <StyledTableRow stlye={{ position: 'relative' }} key={row.email}>
-                                    <StyledTableCell component="th" scope="row">
-                                        <TextField
-                                            id="standard-read-only-input"
-                                            defaultValue={row.email}
-                                            InputProps={{
-                                                readOnly: true,
-                                            }}
-                                        />
-                                    </StyledTableCell>
-                                    <StyledTableCell align="right">
-                                        <TextField
-                                            id="standard-read-only-input"
-                                            defaultValue={row.addedAt}
-                                            InputProps={{
-                                                readOnly: true,
-                                            }}
-                                        />
-                                    </StyledTableCell>
-                                    <StyledTableCell style={{ position: 'relative' }} align="right">
-                                        <Modal
-                                            title="Remove spammer"
-                                            rest={deleteModal()}
-                                        >
-                                            <div>
-                                                <button
-                                                    style={{
-                                                        position: 'absolute',
-                                                        top: -10,
-                                                        right: 15
-                                                    }}
-                                                    className="del1"
-                                                >
-                                                    <DeleteSharpIcon style={{ color: 'red', cursor: 'pointer' }} />
-                                                </button>
-                                            </div>
-                                        </Modal>
-                                    </StyledTableCell>
-                                </StyledTableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+    render() {
+        const {
+            classes,
+            data: {
+                loading,
+                spammerData
+            }
+        } = this.props
 
-                <Modal
+        const addModal = () => {
+            return (
+                <Fragment>
+                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"New spammer"} fullWidth/>
+                    <Button
+                        className={clsx(classes.addButton)}
+                        variant="contained"
+                        startIcon={<SaveIcon/>}
+                    >
+                        Save
+                    </Button>
+                </Fragment>
+            )
+        }
+
+        const deleteModal = () => {
+            return (
+                <Fragment>
+                    <Typography>
+                        Are you sure you want to remove this spammer?<br />
+                        Doing this will allow emails from this user to come in your inbox.
+                    </Typography>
+                    <Button
+                        className={clsx(classes.deleteButton)}
+                        variant="contained"
+                        startIcon={<DeleteIcon/>}
+                    >
+                        Delete
+                    </Button>
+                </Fragment>
+            )
+        }
+
+        return (
+            <div>
+                <NavDrawer>
+                    <h2 className="spammed-header">Spammed email addresses</h2>
+
+                    {
+                        loading
+                            ?
+                            <LoadingSkeleton/>
+                            :
+                            (
+                                <TableContainer component={Paper}>
+                                    <Table className={classes.table} aria-label="customized table">
+                                        <TableHead>
+                                            <TableRow>
+                                                <StyledTableCell>Email addresses:</StyledTableCell>
+                                                <StyledTableCell align="right">Added at:</StyledTableCell>
+                                                <StyledTableCell align="right"> </StyledTableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {spammerData.map((spammer) => (
+                                                <StyledTableRow stlye={{ position: 'relative' }} key={passomatic(Math.ceil(Math.random() * 10))}>
+                                                    <StyledTableCell component="th" scope="row">
+                                                        <TextField
+                                                            id="standard-read-only-input"
+                                                            value={spammer.spammedEmail}
+                                                            InputProps={{
+                                                                readOnly: true,
+                                                            }}
+                                                            fullWidth
+                                                        />
+                                                    </StyledTableCell>
+                                                    <StyledTableCell align="right">
+                                                        <TextField
+                                                            id="standard-read-only-input"
+                                                            value={dayjs(spammer.addedAt).format('DD-MM-YYYY')}
+                                                            InputProps={{
+                                                                readOnly: true,
+                                                            }}
+                                                        />
+                                                    </StyledTableCell>
+                                                    <StyledTableCell style={{ position: 'relative' }} align="right">
+                                                        <Modal
+                                                            title="Remove spammer"
+                                                            rest={deleteModal()}
+                                                        >
+                                                            <div>
+                                                                <button
+                                                                    style={{
+                                                                        position: 'absolute',
+                                                                        top: -10,
+                                                                        right: 15
+                                                                    }}
+                                                                    className="del1"
+                                                                >
+                                                                    <DeleteSharpIcon style={{ color: 'red', cursor: 'pointer' }} />
+                                                                </button>
+                                                            </div>
+                                                        </Modal>
+                                                    </StyledTableCell>
+                                                </StyledTableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            )
+
+
+                    }
+
+                    <Modal
                         title="Add spammer"
                         rest={addModal()}
                     >
                         <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
                     </Modal>
-            </NavDrawer>
-        </div>
-    );
+                </NavDrawer>
+            </div>
+        );
+    }
 }
+
+const mapActionsToProps = {
+    getSpammers
+}
+
+const mapStateToProps = (state) => ({
+    data: state.data,
+    ui: state.ui
+})
+
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(SpammedUsers))

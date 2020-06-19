@@ -1,4 +1,13 @@
-import {LOADING_DATA, SEND_MAIL, SET_ERRORS, SET_GMAIL_DATA, SET_AUTO_REPLY_DATA, ADD_AUTO_REPLY, STOP_LOADING_UI} from '../types'
+import {
+    LOADING_DATA,
+    SEND_MAIL,
+    SET_ERRORS,
+    SET_GMAIL_DATA,
+    SET_AUTO_REPLY_DATA,
+    ADD_AUTO_REPLY,
+    STOP_LOADING_UI,
+    SET_SPAMMER
+} from '../types'
 import axios from 'axios';
 
 export const getGmailData = () => (dispatch) => {
@@ -72,4 +81,17 @@ export const addAutoReply = (autoReplyData) => (dispatch) => {
                 payload: err.response.data
             })
         })
+}
+
+export const getSpammers = () => (dispatch) => {
+    dispatch({ type: LOADING_DATA })
+    axios
+        .get('/getSpamEmailAddresses')
+        .then((res) => {
+            dispatch({
+                type: SET_SPAMMER,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err))
 }
