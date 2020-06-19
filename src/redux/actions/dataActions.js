@@ -6,12 +6,13 @@ import {
     SET_AUTO_REPLY_DATA,
     ADD_AUTO_REPLY,
     STOP_LOADING_UI,
-    SET_SPAMMER
+    SET_SPAMMER,
+    ADD_SPAMMER
 } from '../types'
 import axios from 'axios';
 
 export const getGmailData = () => (dispatch) => {
-    dispatch({ type: LOADING_DATA })
+    dispatch({type: LOADING_DATA})
     axios
         .get('/gmailData')
         .then((res) => {
@@ -25,7 +26,7 @@ export const getGmailData = () => (dispatch) => {
 }
 
 export const sendMail = (mailData) => (dispatch) => {
-    dispatch({ type: LOADING_DATA })
+    dispatch({type: LOADING_DATA})
     axios
         .post('/sendMail', mailData)
         .then((res) => {
@@ -43,7 +44,7 @@ export const sendMail = (mailData) => (dispatch) => {
 }
 
 export const getAutoReplyData = () => (dispatch) => {
-    dispatch({ type: LOADING_DATA })
+    dispatch({type: LOADING_DATA})
     axios
         .get('/getAutoReplies')
         .then((res) => {
@@ -62,7 +63,7 @@ export const getAutoReplyData = () => (dispatch) => {
 }
 
 export const addAutoReply = (autoReplyData) => (dispatch) => {
-    dispatch({ type: LOADING_DATA })
+    dispatch({type: LOADING_DATA})
     axios
         .post('/addAutoReply', autoReplyData)
         .then((res) => {
@@ -84,7 +85,7 @@ export const addAutoReply = (autoReplyData) => (dispatch) => {
 }
 
 export const getSpammers = () => (dispatch) => {
-    dispatch({ type: LOADING_DATA })
+    dispatch({type: LOADING_DATA})
     axios
         .get('/getSpamEmailAddresses')
         .then((res) => {
@@ -95,3 +96,22 @@ export const getSpammers = () => (dispatch) => {
         })
         .catch(err => console.log(err))
 }
+
+export const addSpammer = (spamData) => (dispatch) => {
+    dispatch({type: LOADING_DATA})
+    axios
+        .post('/addSpamEmailAddress', spamData)
+        .then((res) => {
+            dispatch({
+                type: ADD_SPAMMER,
+                payload: res.data
+            })
+        })
+        .catch((err) => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data
+            })
+        })
+}
+

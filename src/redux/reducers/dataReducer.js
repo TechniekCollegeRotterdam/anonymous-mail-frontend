@@ -4,7 +4,8 @@ import {
     SET_GMAIL_DATA,
     SET_AUTO_REPLY_DATA,
     ADD_AUTO_REPLY,
-    SET_SPAMMER
+    SET_SPAMMER,
+    ADD_SPAMMER
 } from '../types'
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
     sendMailMessage: '',
     autoReplyData: [],
     autoReplySendMessage: '',
-    spammerData: []
+    spammerData: [],
+    spamMessage: ''
 }
 
 export default function (state = initialState, action) {
@@ -61,6 +63,13 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 spammerData: action.payload
+            }
+
+        case ADD_SPAMMER:
+            return {
+                ...state,
+                loading: false,
+                spamMessage: action.payload
             }
 
         default:

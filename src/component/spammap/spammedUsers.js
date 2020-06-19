@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import passomatic from "passomatic"
 import dayjs from "dayjs";
 import {connect} from "react-redux";
-import {getSpammers} from "../../redux/actions/dataActions";
+import {getSpammers, addSpammer} from "../../redux/actions/dataActions";
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
@@ -22,6 +22,7 @@ import NavDrawer from "../navigation/NavDrawer"
 import Modal from "../modals/Modals"
 import plus from "../../img/plus.png";
 import LoadingSkeleton from "../skeleton/Skeleton";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = (theme) => ({
     ...theme.spreadThis,
@@ -84,22 +85,12 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
-function createData(email, addedAt) {
-    return { email, addedAt };
-}
-
-const rows = [
-    createData('hacker@outlook.com', '25 march 2020'),
-    createData('hacker@outlook.com', '25 march 2020'),
-    createData('hacker@outlook.com', '25 march 2020'),
-    createData('hacker@outlook.com', '25 march 2020'),
-    createData('hacker@outlook.com', '25 march 2020'),
-    createData('hacker@outlook.com', '25 march 2020'),
-    createData('hacker@outlook.com', '25 march 2020'),
-    createData('hacker@outlook.com', '25 march 2020')
-];
-
 class SpammedUsers extends Component {
+
+    state = {
+        errors: {},
+        spammedEmail: ''
+    }
 
     componentWillReceiveProps(nextProps, nextContext) {
         if (nextProps.ui.errors)
@@ -110,27 +101,73 @@ class SpammedUsers extends Component {
         this.props.getSpammers()
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        const newSpammer = {
+            spammedEmail: this.state.spammedEmail
+        }
+
+        this.props.addSpammer(newSpammer)
+    }
+
     render() {
         const {
             classes,
             data: {
                 loading,
-                spammerData
+                spammerData,
+                spamMessage: { message }
             }
         } = this.props
 
+        const { errors } = this.state
+
         const addModal = () => {
             return (
-                <Fragment>
-                    <TextField variant="outlined" className={clsx(classes.inputs, classes.textColors)} label={"New spammer"} fullWidth/>
+                <form onSubmit={this.handleSubmit}>
+                    <TextField
+                        onChange={this.handleChange}
+                        name={'spammedEmail'}
+                        helperText={errors.spammedEmail}
+                        error={errors.spammedEmail ? true : false}
+                        value={this.state.spammedEmail || ''}
+                        variant="outlined"
+                        className={clsx(classes.inputs, classes.textColors)}
+                        label={"Email address"}
+                        fullWidth
+                    />
+
+                    {!loading && (
+                        <Typography
+                            style={{ marginBottom: 20, marginTop: 10 }}
+                            variant={'body2'}
+                        >
+                            {message}
+                        </Typography>
+                    )}
+
                     <Button
+                        type={"submit"}
                         className={clsx(classes.addButton)}
                         variant="contained"
+                        disabled={loading}
                         startIcon={<SaveIcon/>}
                     >
                         Save
+
+                        {loading && (
+                            <CircularProgress size={30} className={classes.progress}/>
+                        )}
+
                     </Button>
-                </Fragment>
+                </form>
             )
         }
 
@@ -236,7 +273,8 @@ class SpammedUsers extends Component {
 }
 
 const mapActionsToProps = {
-    getSpammers
+    getSpammers,
+    addSpammer
 }
 
 const mapStateToProps = (state) => ({
