@@ -115,3 +115,12 @@ export const addSpammer = (spamData) => (dispatch) => {
         })
 }
 
+export const getSettingsUser = async()  => {
+    const userData = await axios
+    .get("/getOwnUserData")
+    .then((res) => {return res.data})
+    .catch(err => console.log(err))
+
+    return userData
+}
+
