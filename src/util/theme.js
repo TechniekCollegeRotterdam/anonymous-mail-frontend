@@ -67,6 +67,6 @@ export default {
         },
         textField: {
             margin: '10px auto',
-        },
+        }
     }
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, {Fragment, Component} from 'react';
 import clsx from 'clsx';
 import passomatic from "passomatic"
 import {connect} from "react-redux";
@@ -13,6 +13,7 @@ import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from "@material-ui/core/Grid";
 
 const styles = (theme) => ({
     ...theme.spreadThis,
@@ -20,7 +21,7 @@ const styles = (theme) => ({
         background: '#2980B9 -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9) linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)',
         borderRadius: 2,
         width: 175,
-        height:1900,
+        height: 1900,
         padding: 100,
 
     },
@@ -56,7 +57,7 @@ class AutoReplies extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        if (nextProps.ui.errors){
+        if (nextProps.ui.errors) {
             this.setState({
                 errors: nextProps.ui.errors
             })
@@ -97,12 +98,12 @@ class AutoReplies extends Component {
 
     render() {
 
-        const {classes, data: { autoReplyData, autoReplySendMessage: { message } , loading } } = this.props
+        const {classes, data: {autoReplyData, autoReplySendMessage: {message}, loading}} = this.props
 
         const {errors} = this.state
 
         const modalDetails = () => {
-            return(
+            return (
                 <form onSubmit={this.handleSubmit}>
                     <TextField
                         name={'title'}
@@ -155,7 +156,7 @@ class AutoReplies extends Component {
 
                         {!loading && (
                             <Typography
-                                style={{ marginBottom: 20, marginTop: 10 }}
+                                style={{marginBottom: 20, marginTop: 10}}
                                 variant={'body2'}
                             >
                                 {message}
@@ -191,47 +192,76 @@ class AutoReplies extends Component {
                                 ?
                                 <LoadingSkeleton/>
                                 :
-                                autoReplyData.map((autoReply) => {
-                                    //console.log(autoReply)
-                                    return (
-                                        <div key={passomatic(1)} className="auto-btns">
-                                            <TextField
-                                                className="auto-title"
-                                                type="text"
-                                                id="outlined-basic"
-                                                label="Title"
-                                                value={autoReply.title || ''}
-                                                variant="outlined"
-                                            />
-                                            <TextField
-                                                className="auto-subject"
-                                                type="text"
-                                                id="outlined-basic"
-                                                label="Subject"
-                                                value={autoReply.subject || ''}
-                                                variant="outlined"
-                                            />
-                                            <div className="auto-body" style={{padding: 10}}>{autoReply.body}</div>
-                                            <div className="send-to">
-                                                <span>Send to:</span>
-                                                <TextField
-                                                    className="ex-mail"
-                                                    type="text"
-                                                    id="outlined-basic"
-                                                    label="E.g. johndoe@gmail.com"
-                                                    value={autoReply.to || ''}
-                                                    variant="outlined"
-                                                />
-                                            </div>
-                                        </div>
-                                    )
-                                })
+                                <Grid
+                                    container
+                                    direction={"row"}
+                                >
+                                    {autoReplyData.map((autoReply) => {
+                                        //console.log(autoReply)
+                                        return (
+                                            <Fragment>
+                                                <Grid
+                                                    key={passomatic(1)}
+                                                    container
+                                                    item
+                                                    direction={"column"}
+                                                    justify="space-between"
+                                                    alignItems="center"
+                                                    sm={6}
+                                                    m={5}
+                                                    style={{
+                                                        marginBottom: '20px !important',
+                                                        marginTop: 50
+                                                    }}
+                                                >
+                                                    <TextField
+                                                        style={{
+                                                            marginBottom: '5%'
+                                                        }}
+                                                        type="text"
+                                                        id="outlined-basic"
+                                                        label="Title"
+                                                        value={autoReply.title || ''}
+                                                        variant="outlined"
+                                                    />
+                                                    <TextField
+                                                        style={{
+                                                            marginBottom: '5%'
+                                                        }}
+                                                        type="text"
+                                                        id="outlined-basic"
+                                                        label="Subject"
+                                                        value={autoReply.subject || ''}
+                                                        variant="outlined"
+                                                    />
+                                                    <div className="auto-body"
+                                                         style={{padding: 10, marginBottom: '5%'}}>{autoReply.body}</div>
+                                                    <div className="send-to" style={{
+                                                        marginBottom: '5%'
+                                                    }}
+                                                    >
+                                                        <span style={{padding: 10}}>Send to:</span>
+                                                        <TextField
+                                                            className="ex-mail"
+                                                            type="text"
+                                                            id="outlined-basic"
+                                                            label="E.g. johndoe@gmail.com"
+                                                            value={autoReply.to || ''}
+                                                            variant="outlined"
+                                                        />
+                                                    </div>
+                                                </Grid>
+                                            </Fragment>
+                                        )
+                                    })
+                                    }
+                                </Grid>
                         }
                         <Modal
                             title="New auto reply"
                             rest={modalDetails()}
                         >
-                            <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
+                            <img className={clsx(classes.plusicon)} alt="plus icon" src={plus}/>
                         </Modal>
                     </form>
                 </div>
@@ -250,4 +280,4 @@ const mapStateToProps = (state) => ({
     ui: state.ui
 })
 
-export default connect(mapStateToProps, mapActionsToProps )(withStyles(styles)(AutoReplies))
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(AutoReplies))
