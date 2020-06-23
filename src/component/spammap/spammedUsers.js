@@ -160,34 +160,19 @@ class SpammedUsers extends Component {
             )
         }
 
-        const deleteModal = () => {
-            return (
-                <Fragment>
-                    <Typography>
-                        Are you sure you want to remove this spammer?<br/>
-                        Doing this will allow emails from this user to come in your inbox.
-                    </Typography>
-                    <Button
-                        type={"button"}
-                        onClick={() => {
-                            this.props.deleteSpammer(this.props.spammerId3)
-                        }}
-                        className={clsx(classes.deleteButton)}
-                        variant="contained"
-                        startIcon={<DeleteIcon/>}
-                    >
-                        Delete
-                    </Button>
-                </Fragment>
-            )
-        }
-
         return (
             <div>
                 <NavDrawer>
                     <h2 className="spammed-header">Spammed email addresses</h2>
 
                     {
+                        spammerData.length === 0
+                        ?
+                            <Typography
+                                style={{margin: '10% 50%', width: '40vw'}}
+                                className={classes.textColors}
+                            >You have no spammers</Typography>
+                            :
                         loading
                             ?
                             <LoadingSkeleton/>
