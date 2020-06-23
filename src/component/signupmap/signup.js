@@ -100,7 +100,7 @@ class SignUp extends Component {
                 </AppBar>
     
                 <h2 className="signup-text">Signup</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form style={{position: 'relative'}} onSubmit={this.handleSubmit}>
     
                     <TextField
                         name={"email"}
@@ -144,7 +144,7 @@ class SignUp extends Component {
                     />
     
                     {errors.general && (
-                        <Typography variant={"body2"}>
+                        <Typography style={{position: 'absolute', bottom: 0}} variant={"body2"}>
                             {errors.general}
                         </Typography>
                     )}
