@@ -7,9 +7,7 @@ export const loginUser = (loginData, history) => (dispatch) => {
         .post('/loginWithEmailAndPassword', loginData)
         .then((res) => {
             setAuthenicationHeader(res.data.token)
-            //dispatch(getUserData())
             dispatch({ type: CLEAR_ERRORS})
-            // Redirect to homepage if login successful
             history.push('/dashboard');
         })
         .catch((err) => {
@@ -26,7 +24,6 @@ export const signUpUser = (newUserData, history) => (dispatch) => {
         .post('/signUpWithEmailAndPassword', newUserData)
         .then((res) => {
             setAuthenicationHeader(res.data.token)
-            //dispatch(getUserData())
             dispatch({ type: CLEAR_ERRORS })
             history.push('/dashboard')
         })

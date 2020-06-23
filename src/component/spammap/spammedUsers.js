@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React, {Component} from 'react';
 import clsx from 'clsx';
 import passomatic from "passomatic"
 import dayjs from "dayjs";
@@ -16,7 +16,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography"
-import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import NavDrawer from "../navigation/NavDrawer"
 import Modal from "../modals/Modals"
@@ -189,7 +188,6 @@ class SpammedUsers extends Component {
                                         </TableHead>
                                         <TableBody>
                                             {spammerData.map((spammer) => (
-                                                //console.log(spammer.spammedEmailId)
                                                 <StyledTableRow
                                                     stlye={{position: 'relative'}}
                                                     key={passomatic(Math.ceil(Math.random() * 10))}
@@ -221,7 +219,6 @@ class SpammedUsers extends Component {
                                                     >
                                                         <div>
                                                             <Button
-                                                                /*spammerId={spammer.spammedEmailId}*/
                                                                 onClick={
                                                                     () => {
                                                                         this.props.deleteSpammer(spammer.spammedEmailId)
@@ -239,29 +236,6 @@ class SpammedUsers extends Component {
                                                                     style={{color: 'red', cursor: 'pointer'}}/>
                                                             </Button>
                                                         </div>
-                                                        {/*<Modal
-                                                            title="Remove spammer"
-                                                            rest={deleteModal()}
-                                                            spammerId3={this.props.spammerId2}
-                                                        >
-                                                            <div>
-                                                                <button
-                                                                    /*spammerId={spammer.spammedEmailId}
-                                                                    type={"button"}
-                                                                    style={{
-                                                                        position: 'absolute',
-                                                                        top: -10,
-                                                                        right: 15
-                                                                    }}
-                                                                    className="del1"
-                                                                >
-                                                                    <Typography>{spammer.spammerId}</Typography>
-
-                                                                    <DeleteSharpIcon
-                                                                        style={{color: 'red', cursor: 'pointer'}}/>
-                                                                </button>
-                                                            </div>
-                                                        </Modal>*/}
                                                     </StyledTableCell>
                                                 </StyledTableRow>
                                             ))}

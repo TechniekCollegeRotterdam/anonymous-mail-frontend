@@ -139,23 +139,6 @@ class Login extends Component {
                         </Typography>
                     )}
 
-                    {/* {errors.general
-                        ?
-                        (
-                            <Typography variant={"body2"}>
-                                {errors.general}
-                            </Typography>
-                        )
-                        :
-                        (null)
-                    }
-
-                    {errors.general && (
-                        <Typography variant={"body2"}>
-                        {errors.general}
-                    </Typography>
-                    )} */}
-
                     <Button
                         type={"submit"}
                         variant={"contained"}

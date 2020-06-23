@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
 import clsx from 'clsx';
-import {Redirect} from "react-router-dom"
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import './navbar.css'

@@ -2,8 +2,7 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from "react-router-dom";
 
 // Redux
@@ -22,8 +21,6 @@ import './main.css';
 import Home from "./Home";
 import SignUp from "./component/signupmap/signup";
 import Login from "./component/loginmap/login";
-import VerifyEmail from "./component/signupmap/verifyEmail";
-import VerifyLogin from "./component/loginmap/verifyLogin";
 import Dashboard from './component/dashboardmap/Dashboard';
 import AutoReplies from './component/automap/AutoReplies';
 import SpammedUsers from './component/spammap/spammedUsers';
@@ -46,8 +43,6 @@ if (token){
   } else {
     store.dispatch({ type: SET_AUTHENTICATED })
     axios.defaults.headers.common['Authorization'] = token
-    // TODO:
-    //store.dispatch(getGmailData())
   }
 }
 
@@ -78,15 +73,10 @@ export default function App() {
               <Route exact path="/" component={Home} />
               <Route path='/signup' component={SignUp} />
               <Route path='/login' component={Login} />
-              <Route path='/verifyEmail' component={VerifyEmail} />
-              <Route path='/verifyLogin' component={VerifyLogin} />
               <AuthRoute exact path='/dashboard' component={Dashboard} />
               <AuthRoute path='/settings' component={Settings} />
               <AuthRoute path='/autoreplies' component={AutoReplies} />
               <AuthRoute path='/spammedUsers' component={SpammedUsers} />
-              <Route path='/signout'>
-                {<Redirect to="/" />}
-              </Route>
             </Switch>
           </div>
         </Router>

@@ -26,9 +26,6 @@ import windows from './img/windows-logo.png';
 import macos from './img/apple-logo.png';
 import linux from './img/linux-logo.png';
 
-// Pages
-
-
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,

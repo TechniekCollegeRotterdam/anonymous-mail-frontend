@@ -14,7 +14,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 // Image
 import logo from "../../img/Icon.png";
-import btn2 from "../../img/Sign in.png";
 
 // CSS
 import "../../main.css";

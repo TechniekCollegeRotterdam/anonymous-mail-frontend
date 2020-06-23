@@ -21,7 +21,6 @@ export const getGmailData = () => (dispatch) => {
                 type: SET_GMAIL_DATA,
                 payload: res.data
             })
-            console.log(res.data)
         })
         .catch(err => console.log(err))
 }
@@ -109,7 +108,6 @@ export const addSpammer = (spamData) => (dispatch) => {
                 payload: res.data
             })
             window.location.reload()
-            console.log(res.data)
         })
         .catch((err) => {
             dispatch({

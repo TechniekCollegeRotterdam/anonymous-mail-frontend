@@ -197,7 +197,6 @@ class AutoReplies extends Component {
                                     direction={"row"}
                                 >
                                     {autoReplyData.map((autoReply) => {
-                                        //console.log(autoReply)
                                         return (
                                             <Fragment>
                                                 <Grid

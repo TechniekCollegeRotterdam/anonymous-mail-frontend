@@ -1,12 +1,10 @@
-import React, {Fragment, useState, useEffect, Component} from 'react';
+import React from 'react';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import NavDrawer from "../navigation/NavDrawer"
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button"
 import LoadingSkeleton from "../skeleton/Skeleton";
-import Typography from "@material-ui/core/Typography";
 import clsx from 'clsx';
 
 import {connect} from "react-redux"; //connecten 
@@ -128,22 +126,20 @@ class Settings extends React.Component {
 
                                 <div className={clsx(classes.plusicon)}>
 
-                                    <TextField className={clsx(classes.settingsemail)}
+                                    <TextField className={clsx(classes.settingsemail, classes.inputs, classes.textColors)}
                                                variant="outlined"
                                                name={'username'}
                                                value={username}
-                                               className={clsx(classes.inputs, classes.textColors)}
                                                label={"Username"}
                                                placeholder={"Username"}
                                                fullWidth
 
                                     />
 
-                                    <TextField className={clsx(classes.settingsemail)}
+                                    <TextField className={clsx(classes.settingsemail, classes.inputs, classes.textColors)}
                                                variant="outlined"
                                                name={'email'}
                                                value={email}
-                                               className={clsx(classes.inputs, classes.textColors)}
                                                label={"Email"}
                                                placeholder={"Email"}
                                                fullWidth

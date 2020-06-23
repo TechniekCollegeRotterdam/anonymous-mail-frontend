@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect, Component} from 'react';
+import React, {Fragment, Component} from 'react';
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import SendIcon from '@material-ui/icons/Send';
@@ -12,7 +12,6 @@ import Typography from "@material-ui/core/Typography";
 
 import {connect} from "react-redux";
 import {getGmailData, sendMail} from "../../redux/actions/dataActions";
-import {render} from "react-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = (theme) => ({
