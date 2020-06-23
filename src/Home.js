@@ -97,7 +97,7 @@ export default function Home() {
             </div>
 
             <div>
-                <a href="components/signupmap/signup.component.js"><img src={btn} alt="button" className="btn"/></a>
+                <a href="/signup"><img src={btn} alt="button" className="btn"/></a>
             </div>
 
             <div className="download">
