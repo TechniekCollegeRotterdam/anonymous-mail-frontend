@@ -5,7 +5,8 @@ import {
     SET_AUTO_REPLY_DATA,
     ADD_AUTO_REPLY,
     SET_SPAMMER,
-    ADD_SPAMMER
+    ADD_SPAMMER,
+    DELETE_SPAMMER
 } from '../types'
 
 const initialState = {
@@ -70,6 +71,13 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 spamMessage: action.payload
+            }
+
+        case DELETE_SPAMMER:
+            let deletedSpammerIndex = state.spammerData.findIndex((spammer) => spammer.spammedEmailId === action.payload)
+            state.spammerData.splice(deletedSpammerIndex, 1)
+            return {
+                ...state
             }
 
         default:

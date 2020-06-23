@@ -1,10 +1,10 @@
-import React, { Fragment, Component } from 'react';
+import React, {Fragment, Component} from 'react';
 import clsx from 'clsx';
 import passomatic from "passomatic"
 import dayjs from "dayjs";
 import {connect} from "react-redux";
-import {getSpammers, addSpammer} from "../../redux/actions/dataActions";
-import { withStyles } from '@material-ui/core/styles';
+import {getSpammers, addSpammer, deleteSpammer} from "../../redux/actions/dataActions";
+import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import Table from '@material-ui/core/Table';
@@ -62,18 +62,6 @@ const StyledTableCell = withStyles((theme) => ({
     body: {
         fontSize: 14,
         padding: theme.spacing(2)
-    },
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #94f0ff',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-        alignItems: 'center',
     }
 }))(TableCell);
 
@@ -89,7 +77,8 @@ class SpammedUsers extends Component {
 
     state = {
         errors: {},
-        spammedEmail: ''
+        spammedEmail: '',
+        spammerId: ''
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -123,11 +112,11 @@ class SpammedUsers extends Component {
             data: {
                 loading,
                 spammerData,
-                spamMessage: { message }
+                spamMessage: {message}
             }
         } = this.props
 
-        const { errors } = this.state
+        const {errors} = this.state
 
         const addModal = () => {
             return (
@@ -146,7 +135,7 @@ class SpammedUsers extends Component {
 
                     {!loading && (
                         <Typography
-                            style={{ marginBottom: 20, marginTop: 10 }}
+                            style={{marginBottom: 20, marginTop: 10}}
                             variant={'body2'}
                         >
                             {message}
@@ -175,10 +164,14 @@ class SpammedUsers extends Component {
             return (
                 <Fragment>
                     <Typography>
-                        Are you sure you want to remove this spammer?<br />
+                        Are you sure you want to remove this spammer?<br/>
                         Doing this will allow emails from this user to come in your inbox.
                     </Typography>
                     <Button
+                        type={"button"}
+                        onClick={() => {
+                            this.props.deleteSpammer(this.props.spammerId3)
+                        }}
                         className={clsx(classes.deleteButton)}
                         variant="contained"
                         startIcon={<DeleteIcon/>}
@@ -211,7 +204,12 @@ class SpammedUsers extends Component {
                                         </TableHead>
                                         <TableBody>
                                             {spammerData.map((spammer) => (
-                                                <StyledTableRow stlye={{ position: 'relative' }} key={passomatic(Math.ceil(Math.random() * 10))}>
+                                                //console.log(spammer.spammedEmailId)
+                                                <StyledTableRow
+                                                    stlye={{position: 'relative'}}
+                                                    key={passomatic(Math.ceil(Math.random() * 10))}
+                                                    spammerId={spammer.spammedEmailId}
+                                                >
                                                     <StyledTableCell component="th" scope="row">
                                                         <TextField
                                                             id="standard-read-only-input"
@@ -231,13 +229,40 @@ class SpammedUsers extends Component {
                                                             }}
                                                         />
                                                     </StyledTableCell>
-                                                    <StyledTableCell style={{ position: 'relative' }} align="right">
-                                                        <Modal
+                                                    <StyledTableCell
+                                                        style={{position: 'relative'}}
+                                                        align="right"
+                                                        spammerId2={this.props.spammerId}
+                                                    >
+                                                        <div>
+                                                            <Button
+                                                                /*spammerId={spammer.spammedEmailId}*/
+                                                                onClick={
+                                                                    () => {
+                                                                        this.props.deleteSpammer(spammer.spammedEmailId)
+                                                                    }
+                                                                }
+                                                                type={"button"}
+                                                                style={{
+                                                                    position: 'absolute',
+                                                                    top: 10,
+                                                                    right: 15
+                                                                }}
+                                                                className="del1"
+                                                            >
+                                                                <DeleteSharpIcon
+                                                                    style={{color: 'red', cursor: 'pointer'}}/>
+                                                            </Button>
+                                                        </div>
+                                                        {/*<Modal
                                                             title="Remove spammer"
                                                             rest={deleteModal()}
+                                                            spammerId3={this.props.spammerId2}
                                                         >
                                                             <div>
                                                                 <button
+                                                                    /*spammerId={spammer.spammedEmailId}
+                                                                    type={"button"}
                                                                     style={{
                                                                         position: 'absolute',
                                                                         top: -10,
@@ -245,10 +270,13 @@ class SpammedUsers extends Component {
                                                                     }}
                                                                     className="del1"
                                                                 >
-                                                                    <DeleteSharpIcon style={{ color: 'red', cursor: 'pointer' }} />
+                                                                    <Typography>{spammer.spammerId}</Typography>
+
+                                                                    <DeleteSharpIcon
+                                                                        style={{color: 'red', cursor: 'pointer'}}/>
                                                                 </button>
                                                             </div>
-                                                        </Modal>
+                                                        </Modal>*/}
                                                     </StyledTableCell>
                                                 </StyledTableRow>
                                             ))}
@@ -256,15 +284,13 @@ class SpammedUsers extends Component {
                                     </Table>
                                 </TableContainer>
                             )
-
-
                     }
 
                     <Modal
                         title="Add spammer"
                         rest={addModal()}
                     >
-                        <img className={clsx(classes.plusicon)} alt="plus icon" src={plus} />
+                        <img className={clsx(classes.plusicon)} alt="plus icon" src={plus}/>
                     </Modal>
                 </NavDrawer>
             </div>
@@ -274,7 +300,8 @@ class SpammedUsers extends Component {
 
 const mapActionsToProps = {
     getSpammers,
-    addSpammer
+    addSpammer,
+    deleteSpammer
 }
 
 const mapStateToProps = (state) => ({

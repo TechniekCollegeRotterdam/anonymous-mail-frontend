@@ -7,7 +7,8 @@ import {
     ADD_AUTO_REPLY,
     STOP_LOADING_UI,
     SET_SPAMMER,
-    ADD_SPAMMER
+    ADD_SPAMMER,
+    DELETE_SPAMMER
 } from '../types'
 import axios from 'axios';
 
@@ -75,6 +76,7 @@ export const addAutoReply = (autoReplyData) => (dispatch) => {
             dispatch({
                 type: STOP_LOADING_UI
             })
+            window.location.reload()
         })
         .catch((err) => {
             dispatch({
@@ -106,6 +108,8 @@ export const addSpammer = (spamData) => (dispatch) => {
                 type: ADD_SPAMMER,
                 payload: res.data
             })
+            window.location.reload()
+            console.log(res.data)
         })
         .catch((err) => {
             dispatch({
@@ -113,6 +117,18 @@ export const addSpammer = (spamData) => (dispatch) => {
                 payload: err.response.data
             })
         })
+}
+
+export const deleteSpammer = (spammedEmailId) => (dispatch) => {
+    axios
+        .delete(`/deleteSpamEmailAddress/${spammedEmailId}`)
+        .then(() => {
+            dispatch({
+                type: DELETE_SPAMMER,
+                payload: spammedEmailId
+            })
+        })
+        .catch(err => console.log(err))
 }
 
 export const getSettingsUser = async()  => {
