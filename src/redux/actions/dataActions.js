@@ -130,13 +130,3 @@ export const deleteSpammer = (spammedEmailId) => (dispatch) => {
         })
         .catch(err => console.log(err))
 }
-
-export const getSettingsUser = async()  => {
-    const userData = await axios
-    .get("/getOwnUserData")
-    .then((res) => {return res.data})
-    .catch(err => console.log(err))
-
-    return userData
-}
-

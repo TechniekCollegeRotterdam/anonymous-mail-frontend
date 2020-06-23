@@ -1,6 +1,7 @@
-import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "../types";
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED, SET_USER, LOADING_USER } from "../types";
 
 const initialState = {
+    loading: false,
     authenticated: false,
     credentials: {}
 }
@@ -15,6 +16,19 @@ export default function (state = initialState, action) {
 
         case SET_UNAUTHENTICATED:
             return initialState
+
+        case SET_USER:
+            return {
+                ...state,
+                loading: false,
+                credentials: action.payload
+            }
+
+        case LOADING_USER:
+            return {
+                ...state,
+                loading: true
+            }
 
         default:
             return state

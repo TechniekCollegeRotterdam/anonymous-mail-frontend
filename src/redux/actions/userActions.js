@@ -1,4 +1,4 @@
-import {LOADING_UI, SET_ERRORS, CLEAR_ERRORS, SET_UNAUTHENTICATED} from '../types'
+import {LOADING_UI, SET_ERRORS, CLEAR_ERRORS, SET_UNAUTHENTICATED, LOADING_USER, SET_USER} from '../types'
 import axios from 'axios';
 
 export const loginUser = (loginData, history) => (dispatch) => {
@@ -44,6 +44,20 @@ export const logoutUser = () => (dispatch) => {
     dispatch({ type: SET_UNAUTHENTICATED })
     window.location.href = '/'
 }
+
+export const getSettingsUser = () => (dispatch) => {
+    dispatch({ type: LOADING_USER })
+    axios
+        .get('/getOwnUserData')
+        .then((res) => {
+            dispatch({
+                type: SET_USER,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err))
+}
+
 
 const setAuthenicationHeader = (token) => {
     // Save user token in localstorage
