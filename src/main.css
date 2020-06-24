@@ -1049,8 +1049,8 @@ hr {
 
 .settings-save-btn {
     position: absolute;
-    top: 550px;
-    left: 715px;
+    top: 350px;
+    left: 150px;
     width: 120px;
     height: 35px;
     background-color: #2196f3;
@@ -1071,6 +1071,11 @@ hr {
     top: 650px;
     height: 0;
     background-color: transparent;
+}
+
+.Settings-plusicon-14 {
+    right: 45rem !important;
+    position: absolute;
 }
 
 /* Footers van alle pagina's  */
