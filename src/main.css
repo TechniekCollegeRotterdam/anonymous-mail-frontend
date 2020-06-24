@@ -1049,17 +1049,17 @@ hr {
 
 .settings-save-btn {
     position: absolute;
-    top: 350px;
-    left: 150px;
-    width: 120px;
-    height: 35px;
-    background-color: #2196f3;
-    color: white;
-    font-size: 16px;
-    border: 1px solid #94F0FF;
-    box-sizing: border-box;
-    border-radius: 5px;
-    cursor: pointer;
+    top: 350px !important;
+    left: 150px !important;
+    width: 120px !important;
+    height: 35px !important;
+    background-color: #2196f3 !important;
+    color: white !important;
+    font-size: 16px !important;
+    border: 1px solid #94F0FF !important;
+    box-sizing: border-box !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
 }
 
 .settings-save-btn:hover {
@@ -1075,7 +1075,7 @@ hr {
 
 .Settings-plusicon-14 {
     right: 32rem !important;
-    position: absolute;
+    position: absolute !important;
 }
 
 /* Footers van alle pagina's  */
