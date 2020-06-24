@@ -9,6 +9,7 @@ export const loginUser = (loginData, history) => (dispatch) => {
             setAuthenicationHeader(res.data.token)
             dispatch({ type: CLEAR_ERRORS})
             history.push('/dashboard');
+            window.location.reload()
         })
         .catch((err) => {
             dispatch({
