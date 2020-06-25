@@ -4,7 +4,7 @@ import dataReducer from './reducers/dataReducer'
 import uiReducer from './reducers/uiReducer'
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createLogger } from 'redux-logger';
+//import { createLogger } from 'redux-logger';
 
 /*const logger = createLogger({
     /!* https://github.com/evgenyrodionov/redux-logger *!/
