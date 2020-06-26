@@ -165,84 +165,84 @@ class SpammedUsers extends Component {
                     <h2 className="spammed-header">Spammed email addresses</h2>
 
                     {
-                        spammerData.length === 0
-                        ?
-                            <Typography
-                                style={{margin: '10% 50%', width: '40vw'}}
-                                className={classes.textColors}
-                            >You have no spammers</Typography>
-                            :
                         loading
                             ?
                             <LoadingSkeleton/>
                             :
-                            (
-                                <TableContainer component={Paper}>
-                                    <Table className={classes.table} aria-label="customized table">
-                                        <TableHead>
-                                            <TableRow>
-                                                <StyledTableCell>Email addresses:</StyledTableCell>
-                                                <StyledTableCell align="right">Added at:</StyledTableCell>
-                                                <StyledTableCell align="right"> </StyledTableCell>
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {spammerData.map((spammer) => (
-                                                <StyledTableRow
-                                                    stlye={{position: 'relative'}}
-                                                    key={passomatic(Math.ceil(Math.random() * 10))}
-                                                    spammerId={spammer.spammedEmailId}
-                                                >
-                                                    <StyledTableCell component="th" scope="row">
-                                                        <TextField
-                                                            id="standard-read-only-input"
-                                                            value={spammer.spammedEmail}
-                                                            InputProps={{
-                                                                readOnly: true,
-                                                            }}
-                                                            fullWidth
-                                                        />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell align="right">
-                                                        <TextField
-                                                            id="standard-read-only-input"
-                                                            value={dayjs(spammer.addedAt).format('DD-MM-YYYY')}
-                                                            InputProps={{
-                                                                readOnly: true,
-                                                            }}
-                                                        />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell
-                                                        style={{position: 'relative'}}
-                                                        align="right"
-                                                        spammerId2={this.props.spammerId}
+                            spammerData.length === 0
+                                ?
+                                <Typography
+                                    style={{margin: '10% 50%', width: '40vw'}}
+                                    className={classes.textColors}
+                                >You have no spammers</Typography>
+                                :
+                                (
+                                    <TableContainer component={Paper}>
+                                        <Table className={classes.table} aria-label="customized table">
+                                            <TableHead>
+                                                <TableRow>
+                                                    <StyledTableCell>Email addresses:</StyledTableCell>
+                                                    <StyledTableCell align="right">Added at:</StyledTableCell>
+                                                    <StyledTableCell align="right"> </StyledTableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {spammerData.map((spammer) => (
+                                                    <StyledTableRow
+                                                        stlye={{position: 'relative'}}
+                                                        key={passomatic(Math.ceil(Math.random() * 10))}
+                                                        spammerId={spammer.spammedEmailId}
                                                     >
-                                                        <div>
-                                                            <Button
-                                                                onClick={
-                                                                    () => {
-                                                                        this.props.deleteSpammer(spammer.spammedEmailId)
-                                                                    }
-                                                                }
-                                                                type={"button"}
-                                                                style={{
-                                                                    position: 'absolute',
-                                                                    top: 10,
-                                                                    right: 15
+                                                        <StyledTableCell component="th" scope="row">
+                                                            <TextField
+                                                                id="standard-read-only-input"
+                                                                value={spammer.spammedEmail}
+                                                                InputProps={{
+                                                                    readOnly: true,
                                                                 }}
-                                                                className="del1"
-                                                            >
-                                                                <DeleteSharpIcon
-                                                                    style={{color: 'red', cursor: 'pointer'}}/>
-                                                            </Button>
-                                                        </div>
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
-                            )
+                                                                fullWidth
+                                                            />
+                                                        </StyledTableCell>
+                                                        <StyledTableCell align="right">
+                                                            <TextField
+                                                                id="standard-read-only-input"
+                                                                value={dayjs(spammer.addedAt).format('DD-MM-YYYY')}
+                                                                InputProps={{
+                                                                    readOnly: true,
+                                                                }}
+                                                            />
+                                                        </StyledTableCell>
+                                                        <StyledTableCell
+                                                            style={{position: 'relative'}}
+                                                            align="right"
+                                                            spammerId2={this.props.spammerId}
+                                                        >
+                                                            <div>
+                                                                <Button
+                                                                    onClick={
+                                                                        () => {
+                                                                            this.props.deleteSpammer(spammer.spammedEmailId)
+                                                                        }
+                                                                    }
+                                                                    type={"button"}
+                                                                    style={{
+                                                                        position: 'absolute',
+                                                                        top: 10,
+                                                                        right: 15
+                                                                    }}
+                                                                    className="del1"
+                                                                >
+                                                                    <DeleteSharpIcon
+                                                                        style={{color: 'red', cursor: 'pointer'}}/>
+                                                                </Button>
+                                                            </div>
+                                                        </StyledTableCell>
+                                                    </StyledTableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+                                )
                     }
 
                     <Modal

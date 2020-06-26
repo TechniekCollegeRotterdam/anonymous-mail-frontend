@@ -134,7 +134,14 @@ class Login extends Component {
                     {/* TODO:Show general error message */}
 
                     {errors.general && (
-                        <Typography variant={"body2"}>
+                        <Typography
+                            style={{
+                                marginTop: '525px',
+                                marginLeft: '640px'
+                            }}
+                            color={'error'}
+                            variant={"body2"}
+                        >
                             {errors.general}
                         </Typography>
                     )}
